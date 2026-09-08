@@ -210,7 +210,7 @@ function Footer({ onLegal }: { onLegal: (kind: LegalKind) => void }) {
 }
 
 function QuickMenu() {
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(true);
   return (
     <aside
       className={`dw-quick ${collapsed ? "dw-quick-collapsed" : ""}`}
@@ -223,7 +223,8 @@ function QuickMenu() {
         aria-label={collapsed ? "빠른 상담 펼치기" : "빠른 상담 접기"}
         onClick={() => setCollapsed(!collapsed)}
       >
-        {collapsed ? "‹" : "›"}
+        <span>{collapsed ? "+" : "×"}</span>
+        {collapsed ? "QUICK" : "닫기"}
       </button>
       <div id="dw-quick-links" hidden={collapsed}>
         <p>아이원디지털웨어</p>

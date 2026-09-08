@@ -1307,15 +1307,18 @@
 }
 .dw-quick {
   position: fixed;
-  right: 0;
+  right: 18px;
   top: 28%;
   z-index: 20;
   width: 100px;
-  background: white;
-  border: 1px solid #ccc;
+  background: rgba(255, 255, 255, 0.97);
+  border: 1px solid #d8e2e2;
+  border-radius: 14px;
+  overflow: visible;
   text-align: center;
   font-size: 12px;
-  box-shadow: 0 4px 15px #00000008;
+  box-shadow: 0 12px 35px rgba(19, 54, 62, 0.15);
+  animation: dw-quick-open 0.25s ease both;
 }
 .dw-quick > div > p {
   background: var(--navy);
@@ -1345,18 +1348,52 @@
 }
 .dw-quick-toggle {
   position: absolute;
-  left: -20px;
-  top: 0;
-  width: 20px;
-  height: 100%;
+  right: 0;
+  top: -52px;
+  width: 82px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border-radius: 24px !important;
   background: var(--navy) !important;
   color: white !important;
-  padding: 0;
+  padding: 0 12px;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  box-shadow: 0 8px 22px rgba(20, 31, 49, 0.22);
+}
+.dw-quick-toggle span {
+  display: grid;
+  width: 20px;
+  height: 20px;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--teal);
+  font-size: 16px;
+  line-height: 1;
 }
 .dw-quick-collapsed {
-  width: 0;
-  height: 72px;
+  width: 82px;
+  height: 42px;
   border: 0;
+  background: transparent;
+  box-shadow: none;
+  animation: none;
+}
+.dw-quick-collapsed .dw-quick-toggle {
+  top: 0;
+}
+@keyframes dw-quick-open {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 .dw-top {
   position: fixed;
@@ -1429,7 +1466,7 @@
     height: 34px;
   }
   .dw-quick-collapsed {
-    width: 0;
+    width: 76px;
   }
   .dw-nav {
     gap: 18px;
@@ -1440,7 +1477,22 @@
 }
 @media (max-width: 1150px) {
   .dw-quick {
-    display: none;
+    top: auto;
+    right: 12px;
+    bottom: 175px;
+    width: 86px;
+  }
+  .dw-quick-collapsed {
+    width: 76px;
+    height: 40px;
+  }
+  .dw-quick-toggle {
+    width: 76px;
+    height: 40px;
+    top: -48px;
+  }
+  .dw-quick-collapsed .dw-quick-toggle {
+    top: 0;
   }
   .dw-renewal {
     font-size: 15px;
