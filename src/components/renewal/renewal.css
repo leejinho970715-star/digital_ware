@@ -2461,10 +2461,10 @@
   text-align: left;
 }
 .dw-board-row b {
-  border: 1px solid var(--teal);
+  border: 1px solid #c30202;
   border-radius: 30px;
   padding: 4px 10px;
-  color: var(--teal);
+  color: #c30202;
   font-size: 12px;
 }
 .dw-board-row h2 {
@@ -2767,8 +2767,15 @@
   flex-direction: column;
   justify-content: center;
   padding: 50px;
-  background: linear-gradient(145deg, #0d9488, #223351);
+  background-position: center;
+  background-size: cover;
   color: #fff;
+}
+.dw-auth-copy-login {
+  background-color: #0d9488;
+}
+.dw-auth-copy-signup {
+  background-color: #0d9488;
 }
 .dw-auth-copy p {
   font-size: 13px;

@@ -476,7 +476,12 @@ function Auth({ signup = false }: { signup?: boolean }) {
   return (
     <Shell page={signup ? "signup" : "login"}>
       <div className="dw-auth-panel dw-card">
-        <div className="dw-auth-copy">
+        <div
+          className={`dw-auth-copy ${signup ? "dw-auth-copy-signup" : "dw-auth-copy-login"}`}
+          style={{
+            backgroundImage: `url(${import.meta.env.BASE_URL}assets/${signup ? "signup-bg.png" : "login-bg.png"})`,
+          }}
+        >
           <p>WELCOME TO</p>
           <h2>I-ONE DIGITALWARE</h2>
           <span>
