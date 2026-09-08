@@ -2388,7 +2388,7 @@
 }
 .dw-board-tools label {
   display: flex;
-  width: min(380px, 100%);
+  width: min(680px, 100%);
   border: 1px solid #d7dfe1;
   border-radius: 8px;
   overflow: hidden;
@@ -2405,12 +2405,12 @@
   border: 0;
 }
 .dw-board-tools select {
-  width: 118px;
-  flex: 0 0 118px;
+  width: 150px;
+  flex: 0 0 150px;
   border: 0;
   border-right: 1px solid #d7dfe1;
   background: #f7fafa;
-  padding: 0 34px 0 14px;
+  padding: 0 42px 0 24px;
   color: #344247;
   font: inherit;
   outline: 0;
@@ -2559,6 +2559,22 @@
   font-weight: 700;
   cursor: pointer;
 }
+.dw-renewal button.dw-submit,
+.dw-renewal a.dw-submit {
+  background: var(--teal) !important;
+  color: #fff !important;
+  box-shadow: 0 10px 24px rgba(13, 148, 136, 0.2);
+  transition:
+    background 0.25s,
+    transform 0.25s,
+    box-shadow 0.25s;
+}
+.dw-renewal button.dw-submit:hover,
+.dw-renewal a.dw-submit:hover {
+  background: #0b8076 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(13, 148, 136, 0.3);
+}
 .dw-portal-form > .dw-submit {
   display: flex;
   margin: 35px auto 0;
@@ -2602,6 +2618,65 @@
   gap: 20px;
   max-width: 1040px;
   margin: 0 auto 28px;
+}
+.dw-support-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 1040px;
+  margin: 0 auto 42px;
+  overflow: hidden;
+  border: 1px solid #d9e2e3;
+  border-radius: 12px;
+  background: #fff;
+}
+.dw-renewal .dw-support-tabs button {
+  min-height: 62px;
+  border-right: 1px solid #d9e2e3;
+  color: #334046;
+  font-size: 17px;
+  font-weight: 600;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+.dw-renewal .dw-support-tabs button:last-child {
+  border-right: 0;
+}
+.dw-renewal .dw-support-tabs button:hover {
+  background: #edf9f8;
+}
+.dw-renewal .dw-support-tabs button.is-active {
+  background: var(--teal);
+  color: #fff;
+}
+.dw-content-ready {
+  max-width: 1040px;
+  min-height: 360px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  background: #f8fafb;
+  color: #667176;
+  text-align: center;
+}
+.dw-content-ready > span {
+  display: grid;
+  width: 62px;
+  height: 62px;
+  place-items: center;
+  margin-bottom: 18px;
+  border: 3px solid #d6dddf;
+  border-radius: 14px;
+  color: var(--teal);
+  font-size: 31px;
+}
+.dw-content-ready h2 {
+  margin-bottom: 8px;
+  color: #253138;
+  font-size: 22px;
 }
 .dw-support-intro > div {
   padding: 28px;
@@ -2930,6 +3005,12 @@
     align-items: stretch;
     flex-direction: column;
   }
+  .dw-board-tools select {
+    width: 120px;
+    flex-basis: 120px;
+    padding-right: 32px;
+    padding-left: 16px;
+  }
   .dw-board-head {
     display: none;
   }
@@ -2957,6 +3038,18 @@
   }
   .dw-support-intro {
     grid-template-columns: 1fr;
+  }
+  .dw-support-tabs {
+    margin-bottom: 28px;
+  }
+  .dw-renewal .dw-support-tabs button {
+    min-height: 54px;
+    padding: 8px 4px;
+    font-size: 14px;
+  }
+  .dw-content-ready {
+    min-height: 280px;
+    padding: 30px 18px;
   }
   .dw-map-placeholder {
     min-height: 330px;

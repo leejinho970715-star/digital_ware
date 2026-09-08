@@ -337,49 +337,85 @@ export function BusinessInquiry() {
 }
 
 export function CustomerAs() {
+  const [tab, setTab] = useState<"inquiry" | "video" | "resources">("inquiry");
   return (
     <Shell page="customer">
-      <div className="dw-support-intro">
-        <div>
-          <span>01</span>
-          <h2>문의 접수</h2>
-          <p>제품 사용 중 궁금한 점을 자세히 남겨주세요.</p>
-        </div>
-        <div>
-          <span>02</span>
-          <h2>담당자 확인</h2>
-          <p>전문 담당자가 문의 내용을 확인합니다.</p>
-        </div>
-        <div>
-          <span>03</span>
-          <h2>답변 안내</h2>
-          <p>등록한 연락처로 해결 방법을 안내합니다.</p>
-        </div>
+      <div
+        className="dw-support-tabs"
+        role="tablist"
+        aria-label="고객센터 메뉴"
+      >
+        {[
+          ["inquiry", "1:1 사용문의"],
+          ["video", "동영상 강의"],
+          ["resources", "자료실"],
+        ].map(([key, label]) => (
+          <button
+            key={key}
+            role="tab"
+            aria-selected={tab === key}
+            className={tab === key ? "is-active" : ""}
+            onClick={() => setTab(key as typeof tab)}
+          >
+            {label}
+          </button>
+        ))}
       </div>
-      <SuccessForm label="사용문의 등록">
-        <div className="dw-form-grid">
-          <Input label="회사명" required />
-          <Input label="담당자명" required />
-          <Input label="연락처" required />
-          <Input label="이메일" type="email" required />
-          <label>
-            <span>문의 제품</span>
-            <select>
-              <option>SI 시스템</option>
-              <option>PMS</option>
-              <option>데이터 마이그레이션</option>
-              <option>기타</option>
-            </select>
-          </label>
-          <Input label="문의 제목" required />
+      {tab === "inquiry" ? (
+        <>
+          <div className="dw-support-intro">
+            <div>
+              <span>01</span>
+              <h2>문의 접수</h2>
+              <p>제품 사용 중 궁금한 점을 자세히 남겨주세요.</p>
+            </div>
+            <div>
+              <span>02</span>
+              <h2>담당자 확인</h2>
+              <p>전문 담당자가 문의 내용을 확인합니다.</p>
+            </div>
+            <div>
+              <span>03</span>
+              <h2>답변 안내</h2>
+              <p>등록한 연락처로 해결 방법을 안내합니다.</p>
+            </div>
+          </div>
+          <SuccessForm label="사용문의 등록">
+            <div className="dw-form-grid">
+              <Input label="회사명" required />
+              <Input label="담당자명" required />
+              <Input label="연락처" required />
+              <Input label="이메일" type="email" required />
+              <label>
+                <span>문의 제품</span>
+                <select>
+                  <option>SI 시스템</option>
+                  <option>PMS</option>
+                  <option>데이터 마이그레이션</option>
+                  <option>기타</option>
+                </select>
+              </label>
+              <Input label="문의 제목" required />
+            </div>
+            <label className="dw-full">
+              <span>
+                문의 내용<em>*</em>
+              </span>
+              <textarea required rows={8} />
+            </label>
+          </SuccessForm>
+        </>
+      ) : (
+        <div className="dw-content-ready" role="tabpanel">
+          <span aria-hidden="true">{tab === "video" ? "▷" : "▤"}</span>
+          <h2>{tab === "video" ? "동영상 강의" : "자료실"}</h2>
+          <p>
+            {tab === "video"
+              ? "동영상 강의 콘텐츠를 준비 중입니다."
+              : "자료실 콘텐츠를 준비 중입니다."}
+          </p>
         </div>
-        <label className="dw-full">
-          <span>
-            문의 내용<em>*</em>
-          </span>
-          <textarea required rows={8} />
-        </label>
-      </SuccessForm>
+      )}
     </Shell>
   );
 }
