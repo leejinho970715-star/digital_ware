@@ -304,11 +304,10 @@ export function Process({ page }: { page: "si" | "migration" }) {
             <li className="dw-card dw-process-card" key={title} data-reveal>
               <span className="dw-process-icon" aria-hidden="true">
                 <img
-                  src={`${import.meta.env.BASE_URL}assets/figma/${page}-process-icons-hq.png`}
+                  src={`${import.meta.env.BASE_URL}assets/figma/${page}-process-step-${String(i + 1).padStart(2, "0")}.png`}
                   alt=""
                   loading="lazy"
                   decoding="async"
-                  style={{ left: `${i * -100}%` }}
                 />
               </span>
               <p>STEP {String(i + 1).padStart(2, "0")}</p>
