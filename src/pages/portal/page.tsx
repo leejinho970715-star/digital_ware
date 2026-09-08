@@ -388,7 +388,12 @@ export function Location() {
   return (
     <Shell page="location">
       <div className="dw-location-card">
-        <div className="dw-map-placeholder">
+        <div
+          className="dw-map-placeholder"
+          style={{
+            backgroundImage: `url(${import.meta.env.BASE_URL}assets/location-bg.png)`,
+          }}
+        >
           <span>IONE</span>
           <strong>아이원디지털웨어</strong>
           <p>서울특별시 구로구 디지털로 285</p>

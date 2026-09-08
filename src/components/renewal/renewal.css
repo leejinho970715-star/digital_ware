@@ -2633,6 +2633,9 @@
   align-items: center;
   justify-content: center;
   background: radial-gradient(circle at 50% 35%, #d7fffa, #eaf3f3 50%, #dbe8e8);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   text-align: center;
 }
 .dw-map-placeholder span {
