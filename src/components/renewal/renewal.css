@@ -636,7 +636,8 @@
   height: calc(188 * var(--u));
   right: 0;
   bottom: 0;
-  opacity: 0.3;
+  opacity: 0.48;
+  filter: saturate(1.45) contrast(1.08);
 }
 .dw-government-small p,
 .dw-government-small h3 {
