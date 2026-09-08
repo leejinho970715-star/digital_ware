@@ -309,9 +309,10 @@ export function Contact({ page }: { page: "si" | "migration" | "pms" }) {
   return (
     <section
       className="dw-contact"
-      style={{ backgroundImage: `url(${asset(page, "imgBg")})` }}
+      style={{
+        backgroundImage: `url(${import.meta.env.BASE_URL}assets/contact-bg.png)`,
+      }}
     >
-      <Art page={page} name="imgBgAssets" className="dw-contact-orb dw-float" />
       <div className="dw-container dw-center" data-reveal>
         <h2>{title} 도입 문의</h2>
         <p>

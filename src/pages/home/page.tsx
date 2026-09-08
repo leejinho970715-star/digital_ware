@@ -23,6 +23,17 @@ const dataCards = [
   ["업무 연속성", "공백 최소화"],
   ["대용량 처리", "수만 건 이관"],
 ];
+const clients = [
+  ["SK임업", "FORESTRY . ESG", "imgImgi571C22402708E4B6BA360A33D15613149Sk1"],
+  ["스타쉽엔터테인먼트", "ENTERTAINMENT . K-POP", "imgCostomersLogo"],
+  [
+    "에스엠에너지",
+    "ENERGY . SOLAR",
+    "imgImgi813Ea47AaB12E4Bb8B39CAb612A2Ec39DSm1",
+  ],
+  ["TKG 우당", "MANUFACTURING . INDUSTRY", "imgCostomersLogo1"],
+  ["디자인하우스", "MEDIA . PUBLISHING", "imgCostomersLogo2"],
+];
 
 function ServiceCard({
   type,
@@ -394,30 +405,22 @@ export default function Home() {
             ))}
           </div>
         </div>
-        <div className="dw-client-strip" aria-label="주요 고객사">
-          {[
-            [
-              "SK임업",
-              "FORESTRY . ESG",
-              "imgImgi571C22402708E4B6BA360A33D15613149Sk1",
-            ],
-            ["스타쉽엔터테인먼트", "ENTERTAINMENT . K-POP", "imgCostomersLogo"],
-            [
-              "에스엠에너지",
-              "ENERGY . SOLAR",
-              "imgImgi813Ea47AaB12E4Bb8B39CAb612A2Ec39DSm1",
-            ],
-            ["TKG 우당", "MANUFACTURING . INDUSTRY", "imgCostomersLogo1"],
-            ["디자인하우스", "MEDIA . PUBLISHING", "imgCostomersLogo2"],
-          ].map(([name, industry, img]) => (
-            <article className="dw-card dw-client" key={name}>
-              <Art name={img} alt={name} />
-              <div>
-                <h3>{name}</h3>
-                <p>{industry}</p>
-              </div>
-            </article>
-          ))}
+        <div className="dw-client-marquee" aria-label="주요 고객사">
+          <div className="dw-client-strip">
+            {[...clients, ...clients].map(([name, industry, img], index) => (
+              <article
+                className="dw-card dw-client"
+                key={`${name}-${index}`}
+                aria-hidden={index >= clients.length}
+              >
+                <Art name={img} alt={index < clients.length ? name : ""} />
+                <div>
+                  <h3>{name}</h3>
+                  <p>{industry}</p>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
     </Layout>

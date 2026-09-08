@@ -21,7 +21,7 @@ GitHub Actions가 `main` 푸시마다 `/digital_ware/` 경로로 빌드하여 Gi
 
 ## 구현
 
-- Figma 원본 이미지·SVG 에셋 147개 및 Pretendard 폰트 로컬 저장
+- Figma 및 제공 이미지·SVG 에셋 148개와 Pretendard 폰트 로컬 저장
 - GSAP ScrollTrigger와 Lenis 스크롤, 숫자 카운트, 버튼 등장, 그래프 확장, 부유·버블 회전 모션
 - 모바일 서비스 메뉴, 실제 경로 링크, 키보드 포커스, 동작 줄이기 설정 지원
 - `dw-` CSS 접두사, 페이지별 모션 수명 관리, 기존 기능으로 연결하는 경로 어댑터

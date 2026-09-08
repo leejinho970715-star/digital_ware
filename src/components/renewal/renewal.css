@@ -172,6 +172,29 @@
   border-radius: calc(10 * var(--u));
   position: relative;
   box-shadow: 0 4px 4px #0000000c;
+  overflow: hidden;
+  isolation: isolate;
+}
+.dw-card::after {
+  content: "";
+  position: absolute;
+  z-index: 8;
+  top: -45%;
+  bottom: -45%;
+  left: -55%;
+  width: 32%;
+  pointer-events: none;
+  opacity: 0;
+  transform: skewX(-20deg);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.16),
+    rgba(255, 255, 255, 0.88),
+    rgba(126, 238, 229, 0.34),
+    transparent
+  );
+  filter: blur(1px);
 }
 .dw-card-bubble {
   position: absolute;
@@ -695,15 +718,19 @@
   margin-top: calc(20 * var(--u));
   font-weight: 600;
 }
+.dw-client-marquee {
+  width: 100%;
+  overflow: hidden;
+  margin-top: calc(80 * var(--u));
+}
 .dw-client-strip {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   gap: calc(20 * var(--u));
   width: max-content;
   position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-  margin-top: calc(80 * var(--u));
+  animation: dw-client-flow 44s linear infinite;
+  will-change: transform;
 }
 .dw-client {
   width: calc(454 * var(--u));
@@ -2066,8 +2093,7 @@
   }
 }
 
-.dw-sub-hero::before,
-.dw-contact::before {
+.dw-sub-hero::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -2076,6 +2102,60 @@
 }
 .dw-contact-orb {
   opacity: 0.5;
+}
+
+@keyframes dw-glass-sweep {
+  0% {
+    left: -55%;
+    opacity: 0;
+  }
+  18% {
+    opacity: 1;
+  }
+  100% {
+    left: 125%;
+    opacity: 0;
+  }
+}
+@keyframes dw-client-flow {
+  from {
+    transform: translateX(calc(-50% - calc(10 * var(--u))));
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@media (hover: hover) {
+  .dw-card {
+    transition:
+      border-color 0.25s,
+      box-shadow 0.25s;
+  }
+  .dw-card:hover {
+    border-color: var(--teal);
+    box-shadow: 0 10px 28px rgba(13, 148, 136, 0.14);
+  }
+  .dw-card:hover::after {
+    animation: dw-glass-sweep 0.9s ease-out forwards;
+  }
+  .dw-client-marquee:hover .dw-client-strip {
+    animation-play-state: paused;
+  }
+}
+.dw-client-marquee .dw-client-strip {
+  left: auto;
+  width: max-content;
+  margin: 0;
+  overflow: visible;
+  scroll-snap-type: none;
+}
+@media (max-width: 640px) {
+  .dw-client-marquee {
+    margin-top: 30px;
+  }
+  .dw-client-marquee .dw-client-strip {
+    gap: 14px;
+  }
 }
 
 /* Company profile / Figma node 256:2331 */
