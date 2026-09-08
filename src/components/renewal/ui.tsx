@@ -282,13 +282,13 @@ export function Process({ page }: { page: "si" | "migration" }) {
         <ol className="dw-process-grid">
           {titles.map((title, i) => (
             <li className="dw-card dw-process-card" key={title} data-reveal>
-              <Art
-                page={page}
-                name={
-                  i === 4 && page === "si"
-                    ? "imgStep03Icon1"
-                    : `imgStep0${i + 1}Icon`
-                }
+              <span
+                className="dw-process-icon"
+                aria-hidden="true"
+                style={{
+                  backgroundImage: `url(${import.meta.env.BASE_URL}assets/figma/${page}-process-icons-hq.png)`,
+                  backgroundPosition: `${i * 25}% center`,
+                }}
               />
               <p>STEP {String(i + 1).padStart(2, "0")}</p>
               <h3>{title}</h3>
