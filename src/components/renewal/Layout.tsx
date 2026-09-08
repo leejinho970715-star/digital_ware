@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import { Art, SiteLink } from "./ui";
 import { socialLinks } from "./config";
 import { useMotion } from "./useMotion";
+import Chatbot from "./Chatbot";
 import "./renewal.css";
 
 function Header() {
@@ -34,9 +35,9 @@ function Header() {
           className="dw-menu-toggle"
           aria-expanded={open}
           aria-controls="dw-navigation"
+          aria-label={open ? "메뉴 닫기" : "메뉴 열기"}
           onClick={() => setOpen(!open)}
         >
-          {open ? "닫기" : "메뉴"}
           <span aria-hidden="true">{open ? "×" : "☰"}</span>
         </button>
         <nav
@@ -162,16 +163,6 @@ function Footer() {
           </div>
         </div>
       </div>
-      <a
-        className="dw-chat"
-        href="https://pf.kakao.com/_xnFVzK/chat"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="상담 채팅 열기"
-      >
-        <Art name="imgAiSmartChatbot" className="dw-float" />
-        <span>AI 스마트 챗봇</span>
-      </a>
     </footer>
   );
 }
@@ -247,6 +238,7 @@ export default function Layout({
         {children}
       </main>
       {home && <QuickMenu />}
+      <Chatbot />
       <Footer />
       <button
         className="dw-top"

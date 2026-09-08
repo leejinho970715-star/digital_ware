@@ -1115,21 +1115,179 @@
 .dw-copyright {
   margin-top: calc(35 * var(--u)) !important;
 }
-.dw-chat {
-  position: absolute;
-  right: calc(40 * var(--u));
-  bottom: calc(35 * var(--u));
-  width: calc(141 * var(--u));
-  text-align: center;
+.dw-chatbot {
+  position: fixed;
+  z-index: 35;
+  right: 24px;
+  bottom: 72px;
+  font-size: 15px;
+  line-height: 1.5;
 }
-.dw-chat .dw-art {
-  width: 100%;
-  height: calc(118 * var(--u));
+.dw-chatbot-trigger {
+  width: 108px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 0 !important;
+  filter: drop-shadow(0 8px 14px rgba(13, 148, 136, 0.18));
 }
-.dw-chat span {
-  font-size: calc(20 * var(--u));
-  font-weight: 600;
+.dw-chatbot-trigger .dw-art {
+  width: 94px;
+  height: 79px;
+  object-fit: contain;
+}
+.dw-chatbot-trigger span {
+  border: 1px solid rgba(13, 148, 136, 0.25);
+  border-radius: 20px;
+  padding: 5px 10px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
   color: var(--teal);
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+  box-shadow: 0 5px 18px rgba(26, 34, 48, 0.1);
+}
+.dw-chatbot-panel {
+  position: absolute;
+  right: 0;
+  bottom: 112px;
+  width: min(390px, calc(100vw - 32px));
+  max-height: min(650px, calc(100dvh - 155px));
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(13, 148, 136, 0.28);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 22px 70px rgba(26, 34, 48, 0.22);
+  transform-origin: right bottom;
+  animation: dw-chatbot-open 0.3s ease-out both;
+}
+.dw-chatbot-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px;
+  color: white;
+  background: linear-gradient(135deg, #0d9488, #08776e);
+}
+.dw-chatbot-head > div {
+  display: flex;
+  flex-direction: column;
+}
+.dw-chatbot-head strong {
+  font-size: 18px;
+}
+.dw-chatbot-head span {
+  margin-top: 2px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.8);
+}
+.dw-chatbot-head button {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: white !important;
+  font-size: 25px;
+  line-height: 1;
+}
+.dw-chatbot-body {
+  padding: 18px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.dw-chatbot-message,
+.dw-chatbot-answer {
+  width: fit-content;
+  max-width: 92%;
+  padding: 13px 15px;
+  border-radius: 5px 16px 16px 16px;
+  background: #eef7f6;
+  color: #33413f;
+}
+.dw-chatbot-conversation {
+  margin-top: 14px;
+}
+.dw-chatbot-user {
+  width: fit-content;
+  max-width: 88%;
+  margin: 0 0 10px auto !important;
+  padding: 11px 14px;
+  border-radius: 16px 5px 16px 16px;
+  background: var(--navy);
+  color: white;
+}
+.dw-chatbot-answer p {
+  margin: 0 !important;
+}
+.dw-chatbot-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 12px;
+}
+.dw-chatbot-links a {
+  padding: 6px 9px;
+  border: 1px solid rgba(13, 148, 136, 0.25);
+  border-radius: 12px;
+  background: white;
+  color: var(--teal);
+  font-size: 12px;
+  font-weight: 600;
+}
+.dw-chatbot-questions {
+  display: grid;
+  gap: 8px;
+  margin-top: 18px;
+}
+.dw-chatbot-questions button {
+  width: 100%;
+  padding: 11px 13px;
+  border: 1px solid #d8e8e6 !important;
+  border-radius: 12px;
+  background: white !important;
+  color: #263230 !important;
+  text-align: left;
+  font-size: 14px;
+  transition:
+    border-color 0.2s,
+    background 0.2s,
+    color 0.2s,
+    transform 0.2s;
+}
+.dw-chatbot-questions button:hover,
+.dw-chatbot-questions button.is-selected {
+  border-color: var(--teal) !important;
+  background: #eaf7f5 !important;
+  color: #08776e !important;
+  transform: translateX(3px);
+}
+.dw-chatbot-foot {
+  padding: 12px 18px;
+  border-top: 1px solid #e3eceb;
+  background: #f9fbfb;
+  color: #66716f;
+  text-align: center;
+  font-size: 12px;
+}
+.dw-chatbot-foot a {
+  color: var(--teal);
+  font-weight: 700;
+  text-decoration: underline;
+}
+@keyframes dw-chatbot-open {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 .dw-quick {
   position: fixed;
@@ -2534,5 +2692,82 @@
   }
   .dw-about-bubbles {
     display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .dw-renewal,
+  .dw-renewal main,
+  .dw-renewal section,
+  .dw-card,
+  .dw-notices,
+  .dw-notice-list,
+  .dw-notice-list a,
+  .dw-notice-list p {
+    min-width: 0;
+    max-width: 100%;
+  }
+  .dw-renewal h1,
+  .dw-renewal h2,
+  .dw-renewal h3,
+  .dw-renewal p,
+  .dw-renewal li {
+    overflow-wrap: anywhere;
+  }
+  .dw-notices,
+  .dw-notice-list a {
+    overflow: hidden;
+  }
+  .dw-notice-list p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .dw-menu-toggle {
+    width: 48px;
+    height: 48px;
+    justify-content: center;
+    padding: 0;
+  }
+  .dw-menu-toggle span {
+    font-size: 27px;
+    line-height: 1;
+  }
+  .dw-contact .dw-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+  .dw-contact .dw-button {
+    width: 210px;
+    min-width: 210px;
+    min-height: 58px;
+    padding-inline: 14px;
+  }
+  .dw-chatbot {
+    right: 12px;
+    bottom: 66px;
+  }
+  .dw-chatbot-trigger {
+    width: 80px;
+  }
+  .dw-chatbot-trigger .dw-art {
+    width: 70px;
+    height: 59px;
+  }
+  .dw-chatbot-trigger span {
+    padding: 4px 8px;
+    font-size: 10px;
+  }
+  .dw-chatbot-panel {
+    bottom: 88px;
+    width: calc(100vw - 24px);
+    max-height: calc(100dvh - 175px);
+    border-radius: 18px;
+  }
+  .dw-chatbot-body {
+    padding: 14px;
+  }
+  .dw-chatbot-questions button {
+    font-size: 13px;
   }
 }
