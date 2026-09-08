@@ -161,6 +161,12 @@ export function GovernmentNotice() {
         <p>기업 성장을 위한 최신 지원사업 소식을 확인하세요.</p>
         <label>
           <span className="dw-sr-only">공지 검색</span>
+          <select aria-label="공지 유형" defaultValue="all">
+            <option value="all">전체</option>
+            <option value="notice">공지</option>
+            <option value="support">지원사업</option>
+            <option value="material">자료</option>
+          </select>
           <input placeholder="검색어를 입력하세요" />
           <button>검색</button>
         </label>
