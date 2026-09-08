@@ -622,6 +622,7 @@
   white-space: nowrap;
 }
 .dw-notices .dw-button {
+  margin-top: 44px;
   min-height: calc(50 * var(--u));
   font-size: calc(18 * var(--u));
 }
