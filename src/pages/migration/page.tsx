@@ -5,6 +5,7 @@ import {
   asset,
   Bubble,
   Contact,
+  PageBreadcrumb,
   Process,
   SectionTitle,
   Stats,
@@ -26,6 +27,7 @@ export default function Migration() {
         <br />
         기간 제한 없는 무결점 마이그레이션을 경험하세요.
       </SubHero>
+      <PageBreadcrumb items={["제품/서비스", "데이터 마이그레이션"]} />
       <section className="dw-section">
         <div className="dw-container">
           <SectionTitle

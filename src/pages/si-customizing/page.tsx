@@ -2,6 +2,7 @@ import Layout from "../../components/renewal/Layout";
 import {
   Art,
   Contact,
+  PageBreadcrumb,
   Process,
   SectionTitle,
   Stats,
@@ -24,6 +25,7 @@ export default function SI() {
         <br />
         현업에서 즉시 활용 가능한 최적의 시스템을 구축합니다.
       </SubHero>
+      <PageBreadcrumb items={["제품/서비스", "SI 개발"]} />
       <section className="dw-section">
         <div className="dw-container">
           <SectionTitle label="SI 개발" title="체계적인 SI 개발 서비스 범위">

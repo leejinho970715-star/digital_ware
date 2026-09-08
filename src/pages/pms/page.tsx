@@ -3,6 +3,7 @@ import {
   Art,
   Bubble,
   Contact,
+  PageBreadcrumb,
   SectionTitle,
   SubHero,
   TextCard,
@@ -43,6 +44,7 @@ export default function PMS() {
         실시간 연동으로 원가부터 일정까지, 빈틈 없는 통합 관리 환경을
         제공합니다.
       </SubHero>
+      <PageBreadcrumb items={["제품/서비스", "PMS 솔루션"]} />
       <section className="dw-section">
         <div className="dw-container">
           <SectionTitle label="PMS 서비스 소개" title="PMS란?">

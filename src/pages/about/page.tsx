@@ -2,6 +2,7 @@ import type { CSSProperties, ReactNode } from "react";
 import Layout from "../../components/renewal/Layout";
 import {
   Art,
+  PageBreadcrumb,
   SectionTitle,
   SiteLink,
   asset,
@@ -101,6 +102,7 @@ export default function About() {
           />
         </div>
       </section>
+      <PageBreadcrumb items={["기업소개", "기업 소개"]} />
 
       <section
         className="dw-about-story"

@@ -86,6 +86,26 @@ export function Art({
 export function Bubble() {
   return <Art name="imgMiniBubble" className="dw-card-bubble" />;
 }
+export function PageBreadcrumb({ items }: { items: string[] }) {
+  return (
+    <nav className="dw-breadcrumb" aria-label="현재 위치">
+      <div className="dw-container">
+        <SiteLink to="/" aria-label="홈">
+          ⌂
+        </SiteLink>
+        {items.map((item, index) => (
+          <span
+            key={item}
+            className={index === items.length - 1 ? "is-current" : ""}
+          >
+            <b>›</b>
+            {item}
+          </span>
+        ))}
+      </div>
+    </nav>
+  );
+}
 export function SectionTitle({
   label,
   title,
