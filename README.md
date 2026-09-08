@@ -2,13 +2,19 @@
 
 Figma 다섯 프레임을 구현한 React 19 · TypeScript 기반의 반응형 UI 스킨입니다. 기존 홈페이지의 프레임워크와 페이지 경로를 유지했습니다.
 
-| 페이지              | 미리보기                                                           |
-| ------------------- | ------------------------------------------------------------------ |
-| 메인                | https://leejinho970715-star.github.io/digital_ware/                |
-| SI 커스터마이징     | https://leejinho970715-star.github.io/digital_ware/si-customizing/ |
-| 데이터 마이그레이션 | https://leejinho970715-star.github.io/digital_ware/migration/      |
-| PMS 솔루션          | https://leejinho970715-star.github.io/digital_ware/pms/            |
-| 기업 소개           | https://leejinho970715-star.github.io/digital_ware/about/          |
+| 페이지              | 미리보기                                                              |
+| ------------------- | --------------------------------------------------------------------- |
+| 메인                | https://leejinho970715-star.github.io/digital_ware/                   |
+| SI 커스터마이징     | https://leejinho970715-star.github.io/digital_ware/si-customizing/    |
+| 데이터 마이그레이션 | https://leejinho970715-star.github.io/digital_ware/migration/         |
+| PMS 솔루션          | https://leejinho970715-star.github.io/digital_ware/pms/               |
+| 기업 소개           | https://leejinho970715-star.github.io/digital_ware/about/             |
+| 정부지원사업 공지   | https://leejinho970715-star.github.io/digital_ware/government-notice/ |
+| 제품 구매상담       | https://leejinho970715-star.github.io/digital_ware/inquiry/           |
+| 비즈니스 제휴문의   | https://leejinho970715-star.github.io/digital_ware/business-inquiry/  |
+| 1:1 사용문의        | https://leejinho970715-star.github.io/digital_ware/customer-as/       |
+| 오시는 길           | https://leejinho970715-star.github.io/digital_ware/location/          |
+| 로그인 / 회원가입   | `/login/`, `/signup/`                                                 |
 
 ## 개발
 
@@ -21,10 +27,11 @@ GitHub Actions가 `main` 푸시마다 `/digital_ware/` 경로로 빌드하여 Gi
 
 ## 구현
 
-- Figma 및 제공 이미지·SVG 에셋 155개와 Pretendard 폰트 로컬 저장
+- Figma 및 제공 이미지·SVG 에셋과 Pretendard 폰트 로컬 저장
 - GSAP ScrollTrigger와 Lenis 스크롤, 숫자 카운트, 버튼 등장, 그래프 확장, 부유·버블 회전 모션
 - 모바일 서비스 메뉴, 선택형 FAQ 챗봇, 실제 경로 링크, 키보드 포커스, 동작 줄이기 설정 지원
 - 제공 파비콘과 공유용 OG 이미지 적용
+- 공지 목록·상세, 상담·제휴·고객문의 폼, 오시는 길, 회원 화면과 정책 모달 구현
 - `dw-` CSS 접두사, 페이지별 모션 수명 관리, 기존 기능으로 연결하는 경로 어댑터
 
 공지사항·후기·성과 수치는 Figma의 화면 콘텐츠이며 실시간 게시판 조회는 아닙니다. 로그인·문의·고객지원은 기존 운영 사이트로 연결합니다. 기존 사이트에 스킨을 이식하는 절차와 연결 지점은 [INTEGRATION.md](docs/INTEGRATION.md)를 참고하세요.

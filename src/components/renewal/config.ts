@@ -6,6 +6,13 @@ export const serviceRoutes = [
   "/migration",
   "/pms",
   "/about",
+  "/government-notice",
+  "/inquiry",
+  "/business-inquiry",
+  "/customer-as",
+  "/location",
+  "/login",
+  "/signup",
 ];
 export const contactPhone = "1877-0256"; // As specified by the supplied Figma contact sections.
 export const socialLinks = [

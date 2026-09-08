@@ -23,6 +23,8 @@
 5. 기존 App.tsx, router/config.tsx, i18n, SchemaInjector, 인증, Supabase 함수, 관리자·고객 문의 페이지는 교체하지 않는다. 이 저장소의 App.tsx는 네 페이지를 확인하기 위한 독립 미리보기용이다.
 6. 기존 BASE_PATH를 유지한다. 에셋 경로는 Vite의 `import.meta.env.BASE_URL`을 사용한다. 기존 도메인은 `/`, GitHub Pages는 `/digital_ware/`로 빌드한다.
 
+공지사항, 구매·제휴문의, 고객문의, 오시는 길, 로그인과 회원가입 경로도 리뉴얼 UI로 구성했다. 현재 독립 미리보기의 폼은 화면 상태를 확인하는 프론트엔드 접수 완료 동작이며, 운영 적용 시 기존 Supabase 조회·저장·인증 함수를 같은 submit handler에 연결한다. 푸터의 개인정보취급방침과 이용약관은 페이지 이동 없이 공통 모달로 표시한다.
+
 CSS는 `.dw-renewal` 및 `dw-` 접두사로 구분하며 기존 `.container`, `.card`, `button` 등 전역 스타일을 재정의하지 않는다. Pretendard는 로컬 woff2로 제공한다. GSAP의 context와 Lenis는 해당 페이지를 벗어날 때 해제한다. 기존 앱에 별도 Lenis 인스턴스가 추가된다면 `useMotion.ts`의 스크롤 인스턴스는 앱 공통 인스턴스 하나로 통합해야 한다.
 
 ## 데이터와 외부 기능 연결

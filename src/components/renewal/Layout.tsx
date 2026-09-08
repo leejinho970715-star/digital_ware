@@ -4,16 +4,19 @@ import { Art, SiteLink } from "./ui";
 import { socialLinks } from "./config";
 import { useMotion } from "./useMotion";
 import Chatbot from "./Chatbot";
+import LegalModal, { type LegalKind } from "./LegalModal";
 import "./renewal.css";
 
 function Header() {
   const [open, setOpen] = useState(false);
   const [services, setServices] = useState(false);
+  const [submenu, setSubmenu] = useState("");
   const location = useLocation();
   const menuButton = useRef<HTMLButtonElement>(null);
   useEffect(() => {
     setOpen(false);
     setServices(false);
+    setSubmenu("");
   }, [location.pathname]);
   return (
     <header
@@ -75,10 +78,49 @@ function Header() {
               <SiteLink to="/pms">PMS 솔루션</SiteLink>
             </div>
           </div>
-          <SiteLink to="/government-notice">정부 지원사업</SiteLink>
-          <SiteLink to="/inquiry">구입문의</SiteLink>
-          <SiteLink to="/customer-as">고객센터</SiteLink>
-          <SiteLink to="/about">기업소개</SiteLink>
+          {[
+            ["정부 지원사업", "support", [["공지사항", "/government-notice"]]],
+            [
+              "구입 및 제휴문의",
+              "inquiry",
+              [
+                ["제품/서비스 구매상담", "/inquiry"],
+                ["비즈니스 제휴 문의", "/business-inquiry"],
+              ],
+            ],
+            ["고객센터", "customer", [["1:1 사용문의", "/customer-as"]]],
+            [
+              "기업소개",
+              "about",
+              [
+                ["기업소개", "/about"],
+                ["오시는 길", "/location"],
+              ],
+            ],
+          ].map(([title, key, links]) => (
+            <div
+              className="dw-service-menu"
+              key={String(key)}
+              onMouseEnter={() =>
+                window.innerWidth > 900 && setSubmenu(String(key))
+              }
+              onMouseLeave={() => window.innerWidth > 900 && setSubmenu("")}
+            >
+              <button
+                aria-expanded={submenu === key}
+                onClick={() => setSubmenu(submenu === key ? "" : String(key))}
+              >
+                {String(title)}
+              </button>
+              <div className="dw-dropdown" hidden={submenu !== key}>
+                {(links as string[][]).map(([label, to]) => (
+                  <SiteLink to={to} key={to}>
+                    {label}
+                  </SiteLink>
+                ))}
+              </div>
+            </div>
+          ))}
           <div className="dw-auth">
             <SiteLink to="/login" className="dw-button">
               <Art name="imgLucideLogIn" />
@@ -95,7 +137,7 @@ function Header() {
   );
 }
 
-function Footer() {
+function Footer({ onLegal }: { onLegal: (kind: LegalKind) => void }) {
   return (
     <footer className="dw-footer">
       <div className="dw-container">
@@ -134,8 +176,8 @@ function Footer() {
         </div>
         <div className="dw-footer-bottom">
           <div className="dw-footer-links">
-            <SiteLink to="/privacy">개인정보취급방침</SiteLink>
-            <SiteLink to="/terms">이용약관</SiteLink>
+            <button onClick={() => onLegal("privacy")}>개인정보취급방침</button>
+            <button onClick={() => onLegal("terms")}>이용약관</button>
             <SiteLink to="/location">오시는 길</SiteLink>
           </div>
           <div className="dw-socials">
@@ -212,6 +254,7 @@ export default function Layout({
   home?: boolean;
 }) {
   const root = useRef<HTMLDivElement>(null);
+  const [legal, setLegal] = useState<LegalKind | null>(null);
   const { pathname } = useLocation();
   useEffect(() => {
     const titles: Record<string, string> = {
@@ -220,9 +263,20 @@ export default function Layout({
       "/migration": "데이터 마이그레이션",
       "/pms": "PMS 솔루션",
       "/about": "기업 소개",
+      "/government-notice": "정부지원사업 공지사항",
+      "/inquiry": "제품/서비스 구매상담",
+      "/business-inquiry": "비즈니스 제휴 문의",
+      "/customer-as": "1:1 사용문의",
+      "/location": "오시는 길",
+      "/login": "로그인",
+      "/signup": "회원가입",
     };
     const previous = document.title;
-    document.title = `${titles[pathname.replace(/\/$/, "") || "/"] ?? "페이지 안내"} | 아이원디지털웨어`;
+    const cleanPath = pathname.replace(/\/$/, "") || "/";
+    const pageTitle = cleanPath.startsWith("/government-notice/")
+      ? "정부지원사업 공지사항"
+      : (titles[cleanPath] ?? "페이지 안내");
+    document.title = `${pageTitle} | 아이원디지털웨어`;
     return () => {
       document.title = previous;
     };
@@ -239,7 +293,8 @@ export default function Layout({
       </main>
       {home && <QuickMenu />}
       <Chatbot />
-      <Footer />
+      <Footer onLegal={setLegal} />
+      {legal && <LegalModal kind={legal} onClose={() => setLegal(null)} />}
       <button
         className="dw-top"
         onClick={() =>

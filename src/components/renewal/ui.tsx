@@ -20,7 +20,7 @@ export function SiteLink({
 }) {
   if (
     to === "/" ||
-    serviceRoutes.includes(to) ||
+    serviceRoutes.some((route) => to === route || to.startsWith(`${route}/`)) ||
     (!legacyOrigin && to.startsWith("/"))
   )
     return (

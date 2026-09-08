@@ -6,6 +6,16 @@ import PMS from "./pages/pms/page";
 import About from "./pages/about/page";
 import Layout from "./components/renewal/Layout";
 import { Button } from "./components/renewal/ui";
+import {
+  BusinessInquiry,
+  CustomerAs,
+  GovernmentNotice,
+  GovernmentNoticeDetail,
+  Location,
+  Login,
+  PurchaseInquiry,
+  Signup,
+} from "./pages/portal/page";
 
 export default function App() {
   return (
@@ -15,6 +25,17 @@ export default function App() {
       <Route path="/migration" element={<Migration />} />
       <Route path="/pms" element={<PMS />} />
       <Route path="/about" element={<About />} />
+      <Route path="/government-notice" element={<GovernmentNotice />} />
+      <Route
+        path="/government-notice/:id"
+        element={<GovernmentNoticeDetail />}
+      />
+      <Route path="/inquiry" element={<PurchaseInquiry />} />
+      <Route path="/business-inquiry" element={<BusinessInquiry />} />
+      <Route path="/customer-as" element={<CustomerAs />} />
+      <Route path="/location" element={<Location />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<Signup />} />
       <Route
         path="*"
         element={
