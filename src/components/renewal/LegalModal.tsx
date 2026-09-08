@@ -126,7 +126,17 @@ export default function LegalModal({
             ×
           </button>
         </header>
-        <div className="dw-legal-body">{body}</div>
+        <div
+          className="dw-legal-body"
+          data-lenis-prevent
+          data-lenis-prevent-wheel
+          data-lenis-prevent-touch
+          tabIndex={0}
+          onWheel={(event) => event.stopPropagation()}
+          onTouchMove={(event) => event.stopPropagation()}
+        >
+          {body}
+        </div>
         <footer>
           <button onClick={onClose}>확인</button>
         </footer>
