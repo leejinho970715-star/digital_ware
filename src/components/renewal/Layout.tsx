@@ -224,7 +224,7 @@ function QuickMenu() {
         onClick={() => setCollapsed(!collapsed)}
       >
         <span>{collapsed ? "+" : "×"}</span>
-        {collapsed ? "QUICK" : "닫기"}
+        QUICK MENU
       </button>
       <div id="dw-quick-links" hidden={collapsed}>
         <p>아이원디지털웨어</p>

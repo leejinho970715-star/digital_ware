@@ -1308,9 +1308,9 @@
 .dw-quick {
   position: fixed;
   right: 18px;
-  top: 28%;
-  z-index: 20;
-  width: 100px;
+  bottom: 190px;
+  z-index: 34;
+  width: 112px;
   background: rgba(255, 255, 255, 0.97);
   border: 1px solid #d8e2e2;
   border-radius: 14px;
@@ -1350,7 +1350,7 @@
   position: absolute;
   right: 0;
   top: -52px;
-  width: 82px;
+  width: 112px;
   height: 42px;
   display: flex;
   align-items: center;
@@ -1375,7 +1375,7 @@
   line-height: 1;
 }
 .dw-quick-collapsed {
-  width: 82px;
+  width: 112px;
   height: 42px;
   border: 0;
   background: transparent;
@@ -1388,7 +1388,7 @@
 @keyframes dw-quick-open {
   from {
     opacity: 0;
-    transform: translateY(-8px);
+    transform: translateY(16px);
   }
   to {
     opacity: 1;
@@ -1452,7 +1452,7 @@
 }
 @media (max-width: 1500px) {
   .dw-quick {
-    width: 76px;
+    width: 104px;
   }
   .dw-quick > div > p {
     font-size: 8px;
@@ -1466,7 +1466,7 @@
     height: 34px;
   }
   .dw-quick-collapsed {
-    width: 76px;
+    width: 104px;
   }
   .dw-nav {
     gap: 18px;
@@ -1477,17 +1477,16 @@
 }
 @media (max-width: 1150px) {
   .dw-quick {
-    top: auto;
     right: 12px;
-    bottom: 175px;
-    width: 86px;
+    bottom: 176px;
+    width: 104px;
   }
   .dw-quick-collapsed {
-    width: 76px;
+    width: 104px;
     height: 40px;
   }
   .dw-quick-toggle {
-    width: 76px;
+    width: 104px;
     height: 40px;
     top: -48px;
   }
