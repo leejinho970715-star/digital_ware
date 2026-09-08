@@ -637,8 +637,6 @@
   height: calc(188 * var(--u));
   right: 0;
   bottom: 0;
-  opacity: 0.48;
-  filter: saturate(1.45) contrast(1.08);
 }
 .dw-government-small p,
 .dw-government-small h3 {
@@ -2769,6 +2767,7 @@
   padding: 50px;
   background-position: center;
   background-size: cover;
+  box-shadow: inset 0 0 0 9999px rgba(5, 20, 38, 0.22);
   color: #fff;
 }
 .dw-auth-copy-login {
