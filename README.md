@@ -1,6 +1,6 @@
 # 아이원디지털웨어 리뉴얼
 
-Figma 네 프레임을 구현한 React 19 · TypeScript 기반의 반응형 UI 스킨입니다. 기존 홈페이지의 프레임워크와 페이지 경로를 유지했습니다.
+Figma 다섯 프레임을 구현한 React 19 · TypeScript 기반의 반응형 UI 스킨입니다. 기존 홈페이지의 프레임워크와 페이지 경로를 유지했습니다.
 
 | 페이지              | 미리보기                                                           |
 | ------------------- | ------------------------------------------------------------------ |
@@ -8,6 +8,7 @@ Figma 네 프레임을 구현한 React 19 · TypeScript 기반의 반응형 UI �
 | SI 커스터마이징     | https://leejinho970715-star.github.io/digital_ware/si-customizing/ |
 | 데이터 마이그레이션 | https://leejinho970715-star.github.io/digital_ware/migration/      |
 | PMS 솔루션          | https://leejinho970715-star.github.io/digital_ware/pms/            |
+| 기업 소개           | https://leejinho970715-star.github.io/digital_ware/about/          |
 
 ## 개발
 
@@ -20,7 +21,7 @@ GitHub Actions가 `main` 푸시마다 `/digital_ware/` 경로로 빌드하여 Gi
 
 ## 구현
 
-- Figma 원본 이미지·SVG 에셋 133개 및 Pretendard 폰트 로컬 저장
+- Figma 원본 이미지·SVG 에셋 147개 및 Pretendard 폰트 로컬 저장
 - GSAP ScrollTrigger와 Lenis 스크롤, 숫자 카운트, 버튼 등장, 그래프 확장, 부유·버블 회전 모션
 - 모바일 서비스 메뉴, 실제 경로 링크, 키보드 포커스, 동작 줄이기 설정 지원
 - `dw-` CSS 접두사, 페이지별 모션 수명 관리, 기존 기능으로 연결하는 경로 어댑터

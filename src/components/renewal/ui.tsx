@@ -214,7 +214,7 @@ export function SubHero({
   accent,
   children,
 }: {
-  page: Exclude<PageKey, "home">;
+  page: "si" | "migration" | "pms";
   title: string;
   accent: string;
   children: ReactNode;
@@ -299,7 +299,7 @@ export function Process({ page }: { page: "si" | "migration" }) {
     </section>
   );
 }
-export function Contact({ page }: { page: Exclude<PageKey, "home"> }) {
+export function Contact({ page }: { page: "si" | "migration" | "pms" }) {
   const title =
     page === "si"
       ? "SI 개발"

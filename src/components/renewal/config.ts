@@ -1,7 +1,12 @@
 // Empty origin uses the existing app's routes when this skin is integrated.
 export const legacyOrigin =
   import.meta.env.VITE_LEGACY_ORIGIN ?? "https://idigitalware.com";
-export const serviceRoutes = ["/si-customizing", "/migration", "/pms"];
+export const serviceRoutes = [
+  "/si-customizing",
+  "/migration",
+  "/pms",
+  "/about",
+];
 export const contactPhone = "1877-0256"; // As specified by the supplied Figma contact sections.
 export const socialLinks = [
   ["네이버 카페", "https://cafe.naver.com/ionesoftbank", "imgSpeakerNotes"],

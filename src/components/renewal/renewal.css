@@ -2077,3 +2077,382 @@
 .dw-contact-orb {
   opacity: 0.5;
 }
+
+/* Company profile / Figma node 256:2331 */
+.dw-about-hero {
+  height: calc(800 * var(--u));
+  position: relative;
+  background: #fafafa;
+  overflow: hidden;
+}
+.dw-about-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--about-hero);
+  background-position: center;
+  background-size: cover;
+  opacity: 0.3;
+}
+.dw-about-hero-grid {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: calc(80 * var(--u));
+}
+.dw-about-hero-copy {
+  padding-top: calc(4 * var(--u));
+}
+.dw-about-hero-copy p {
+  margin-top: calc(24 * var(--u));
+  font-size: calc(26 * var(--u));
+  font-weight: 500;
+}
+.dw-about-hero-art {
+  width: calc(709 * var(--u));
+  height: calc(502 * var(--u));
+  object-fit: contain;
+  justify-self: end;
+}
+.dw-about-story {
+  min-height: calc(1948 * var(--u));
+  padding-block: calc(160 * var(--u));
+  position: relative;
+  background: #fafafa;
+}
+.dw-about-story::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--about-story);
+  background-position: center top;
+  background-size: cover;
+  pointer-events: none;
+}
+.dw-about-story .dw-section-title {
+  max-width: calc(830 * var(--u));
+  position: relative;
+}
+.dw-about-strengths {
+  display: grid;
+  gap: calc(80 * var(--u));
+  margin-top: calc(78 * var(--u));
+  position: relative;
+}
+.dw-about-strength {
+  min-height: calc(450 * var(--u));
+  display: grid;
+  grid-template-columns: calc(491 * var(--u)) minmax(0, calc(750 * var(--u)));
+  align-items: center;
+  gap: calc(80 * var(--u));
+}
+.dw-about-strength-reverse {
+  grid-template-columns: minmax(0, calc(750 * var(--u))) calc(676 * var(--u));
+}
+.dw-about-strength-reverse .dw-about-visual {
+  grid-column: 2;
+  grid-row: 1;
+}
+.dw-about-strength-reverse .dw-about-copy {
+  grid-column: 1;
+  grid-row: 1;
+}
+.dw-about-visual {
+  height: calc(409 * var(--u));
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+.dw-about-strength:nth-child(2) .dw-about-visual {
+  height: calc(450 * var(--u));
+}
+.dw-about-strength:nth-child(3) .dw-about-visual {
+  height: calc(393 * var(--u));
+}
+.dw-about-visual > .dw-art:first-child {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  position: relative;
+  z-index: 1;
+}
+.dw-about-effect {
+  position: absolute;
+  width: calc(300 * var(--u));
+  height: calc(320 * var(--u));
+  inset: 50% auto auto 50%;
+  translate: -50% -50%;
+  opacity: 0.75;
+}
+.dw-about-copy h2 {
+  margin-bottom: calc(24 * var(--u));
+}
+.dw-about-copy .dw-description {
+  max-width: calc(750 * var(--u));
+}
+.dw-about-copy .dw-description p + p {
+  margin-top: calc(8 * var(--u));
+}
+.dw-about-copy ul {
+  margin-top: calc(18 * var(--u));
+  padding-left: calc(27 * var(--u));
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.6;
+}
+.dw-about-services {
+  height: calc(749 * var(--u));
+  position: relative;
+  overflow: hidden;
+  padding-top: calc(160 * var(--u));
+  background: #fafafa;
+}
+.dw-about-services::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--about-services);
+  background-position: center;
+  background-size: cover;
+  opacity: 0.3;
+}
+.dw-about-services-orb {
+  position: absolute;
+  width: calc(682 * var(--u));
+  height: calc(528 * var(--u));
+  left: 50%;
+  top: calc(81 * var(--u));
+  translate: -50% 0;
+  opacity: 0.5;
+}
+.dw-about-bubbles .dw-art {
+  position: absolute;
+  width: calc(30 * var(--u));
+  height: calc(30 * var(--u));
+  opacity: 0.5;
+}
+.dw-about-bubbles .dw-art:nth-child(1) {
+  left: 23%;
+  top: 52%;
+}
+.dw-about-bubbles .dw-art:nth-child(2) {
+  right: 23%;
+  top: 52%;
+}
+.dw-about-bubbles .dw-art:nth-child(3) {
+  left: 27%;
+  top: 36%;
+}
+.dw-about-bubbles .dw-art:nth-child(4) {
+  right: 27%;
+  top: 36%;
+}
+.dw-about-bubbles .dw-art:nth-child(5) {
+  left: 27%;
+  top: 67%;
+}
+.dw-about-bubbles .dw-art:nth-child(6) {
+  right: 27%;
+  top: 67%;
+}
+.dw-about-services-copy {
+  position: relative;
+}
+.dw-about-services-copy h2 {
+  font-size: calc(60 * var(--u));
+  font-weight: 700;
+  line-height: 1.2;
+}
+.dw-about-services-copy p {
+  margin-top: calc(40 * var(--u));
+  font-size: calc(26 * var(--u));
+}
+.dw-about-service-grid {
+  margin: calc(43 * var(--u)) auto 0;
+  width: max-content;
+  display: grid;
+  grid-template-columns: repeat(3, calc(204 * var(--u)));
+  gap: calc(18 * var(--u));
+  position: relative;
+}
+.dw-about-service-card {
+  height: calc(207 * var(--u));
+  padding: calc(38 * var(--u)) calc(20 * var(--u));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(12 * var(--u));
+  background: rgba(255, 255, 255, 0.8);
+  transition:
+    transform 0.25s,
+    border-color 0.25s,
+    box-shadow 0.25s;
+}
+.dw-about-service-card:hover {
+  transform: translateY(calc(-8 * var(--u)));
+  border-color: var(--teal);
+  box-shadow: 0 12px 28px #0d948825;
+}
+.dw-about-service-card > span:last-child {
+  font-weight: 500;
+  white-space: nowrap;
+}
+.dw-about-service-icon {
+  display: block;
+  width: calc(98 * var(--u));
+  height: calc(95 * var(--u));
+  overflow: hidden;
+  position: relative;
+}
+.dw-about-service-icon .dw-art {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  max-width: none;
+}
+
+@media (max-width: 1150px) {
+  .dw-about-strength,
+  .dw-about-strength-reverse {
+    grid-template-columns: minmax(300px, 0.75fr) minmax(0, 1fr);
+    gap: 50px;
+  }
+  .dw-about-hero-art {
+    width: 100%;
+  }
+}
+
+@media (max-width: 900px) {
+  .dw-about-hero {
+    height: 550px;
+  }
+  .dw-about-hero-copy h1 {
+    font-size: 48px;
+  }
+  .dw-about-hero-copy p {
+    font-size: 18px;
+  }
+  .dw-about-hero-art {
+    height: 360px;
+  }
+  .dw-about-strengths {
+    gap: 55px;
+  }
+  .dw-about-strength,
+  .dw-about-strength-reverse {
+    min-height: 0;
+    grid-template-columns: minmax(240px, 0.75fr) minmax(0, 1fr);
+    gap: 30px;
+  }
+  .dw-about-visual,
+  .dw-about-strength:nth-child(2) .dw-about-visual,
+  .dw-about-strength:nth-child(3) .dw-about-visual {
+    height: 320px;
+  }
+  .dw-about-services-copy h2 {
+    font-size: 42px;
+  }
+  .dw-about-services-copy p {
+    font-size: 19px;
+  }
+}
+
+@media (max-width: 640px) {
+  .dw-about-hero {
+    height: auto;
+    min-height: 620px;
+    padding: 70px 0 30px;
+  }
+  .dw-about-hero-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 28px;
+  }
+  .dw-about-hero-copy h1 {
+    font-size: 39px;
+  }
+  .dw-about-hero-copy p {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  .dw-about-hero-art {
+    width: 100%;
+    height: 330px;
+  }
+  .dw-about-story {
+    min-height: 0;
+    padding-block: 80px;
+  }
+  .dw-about-strengths {
+    gap: 72px;
+    margin-top: 58px;
+  }
+  .dw-about-strength,
+  .dw-about-strength-reverse {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 24px;
+  }
+  .dw-about-strength-reverse .dw-about-copy {
+    order: 2;
+  }
+  .dw-about-strength-reverse .dw-about-visual {
+    order: 1;
+  }
+  .dw-about-visual,
+  .dw-about-strength:nth-child(2) .dw-about-visual,
+  .dw-about-strength:nth-child(3) .dw-about-visual {
+    height: 300px;
+  }
+  .dw-about-copy h2 {
+    font-size: 25px;
+  }
+  .dw-about-copy .dw-description {
+    font-size: 15px;
+    line-height: 1.65;
+  }
+  .dw-about-services {
+    height: auto;
+    min-height: 750px;
+    padding: 78px 0;
+  }
+  .dw-about-services-copy h2 {
+    font-size: 31px;
+    line-height: 1.35;
+  }
+  .dw-about-services-copy p {
+    font-size: 16px;
+    line-height: 1.65;
+  }
+  .dw-about-services-copy br {
+    display: none;
+  }
+  .dw-about-service-grid {
+    width: 100%;
+    margin-top: 38px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .dw-about-service-card {
+    height: 165px;
+    padding: 25px 5px;
+  }
+  .dw-about-service-icon {
+    width: 72px;
+    height: 70px;
+  }
+  .dw-about-service-card > span:last-child {
+    font-size: 11px;
+  }
+  .dw-about-services-orb {
+    width: 420px;
+    height: 370px;
+    top: 90px;
+  }
+  .dw-about-bubbles {
+    display: none;
+  }
+}

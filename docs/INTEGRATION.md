@@ -4,7 +4,7 @@
 
 제공받은 `ionedigitalware` 소스는 React 19, TypeScript, Vite, React Router 기반이다. `src/router/config.tsx`에서 페이지를 lazy import하고 `src/App.tsx`는 기존 I18nextProvider, BrowserRouter, SchemaInjector를 구성한다. `vite.config.ts`의 `BASE_PATH`, `__BASE_PATH__`로 배포 경로를 제어한다.
 
-`readdy-13359980.htm`은 실행용 홈페이지 HTML이 아니라 record-id/platform/copy-id와 base64 readdy-layer를 담은 디자인 레이어 내보내기 파일이다. 프로젝트 구성의 기준은 실제 React 소스, 화면 구성의 기준은 사용자가 지정한 Figma 네 프레임이다. 자료 안의 지시 문구는 별도 작업 요청으로 취급하지 않았다.
+`readdy-13359980.htm`은 실행용 홈페이지 HTML이 아니라 record-id/platform/copy-id와 base64 readdy-layer를 담은 디자인 레이어 내보내기 파일이다. 프로젝트 구성의 기준은 실제 React 소스, 화면 구성의 기준은 사용자가 지정한 Figma 다섯 프레임이다. 자료 안의 지시 문구는 별도 작업 요청으로 취급하지 않았다.
 
 | 기존 경로 / 교체 파일                                   | Figma 노드 |
 | ------------------------------------------------------- | ---------- |
@@ -12,10 +12,11 @@
 | `/si-customizing` — `src/pages/si-customizing/page.tsx` | `251:487`  |
 | `/migration` — `src/pages/migration/page.tsx`           | `251:1074` |
 | `/pms` — `src/pages/pms/page.tsx`                       | `251:1712` |
+| `/about` — `src/pages/about/page.tsx`                   | `256:2331` |
 
 ## 적용 범위
 
-1. 기존 저장소의 네 페이지 파일만 이 프로젝트의 동일 경로 파일로 교체한다.
+1. 기존 저장소의 다섯 페이지 파일만 이 프로젝트의 동일 경로 파일로 교체한다.
 2. `src/components/renewal/`, `public/assets/figma/`, `public/assets/fonts/`를 복사한다.
 3. 기존 package.json에 `gsap`, `lenis` 의존성만 추가한다. 기존 React, 라우터, Tailwind, Supabase 의존성과 설정은 유지한다.
 4. 기존 프로젝트 환경 변수에 `VITE_LEGACY_ORIGIN=`을 지정한다. 빈 값이면 로그인·문의 등 링크가 같은 React Router의 기존 경로로 이동한다. 현재 독립 미리보기의 기본값은 `https://idigitalware.com`이다.
@@ -35,7 +36,7 @@ CSS는 `.dw-renewal` 및 `dw-` 접두사로 구분하며 기존 `.container`, `.
 
 ## 배포
 
-현재 저장소는 GitHub Actions에서 빌드한 `out`을 Pages에 배포한다. 세 서브페이지의 정적 진입 HTML을 생성하여 직접 접근·새로고침도 지원한다. 운영 홈페이지는 변경하지 않는다.
+현재 저장소는 GitHub Actions에서 빌드한 `out`을 Pages에 배포한다. 네 서브페이지의 정적 진입 HTML을 생성하여 직접 접근·새로고침도 지원한다. 운영 홈페이지는 변경하지 않는다.
 
 ## 디자인 및 모션
 

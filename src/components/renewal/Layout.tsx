@@ -228,6 +228,7 @@ export default function Layout({
       "/si-customizing": "SI 커스터마이징",
       "/migration": "데이터 마이그레이션",
       "/pms": "PMS 솔루션",
+      "/about": "기업 소개",
     };
     const previous = document.title;
     document.title = `${titles[pathname.replace(/\/$/, "") || "/"] ?? "페이지 안내"} | 아이원디지털웨어`;

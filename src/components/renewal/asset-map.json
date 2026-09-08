@@ -139,5 +139,21 @@
     "imgMiniBubble3": "assets/figma/pms-MiniBubble3.png",
     "imgMiniBubble4": "assets/figma/pms-MiniBubble4.png",
     "imgCircle": "assets/figma/pms-Circle.svg"
+  },
+  "about": {
+    "imgVisualBg": "assets/figma/about-VisualBg.png",
+    "imgCompanyVisualImg": "assets/figma/about-CompanyVisualImg.png",
+    "imgBg": "assets/figma/about-Bg.png",
+    "imgCompany1": "assets/figma/about-Company1.png",
+    "imgCompany2": "assets/figma/about-Company2.png",
+    "imgCompany3": "assets/figma/about-Company3.png",
+    "imgEffect": "assets/figma/about-Effect.svg",
+    "imgBg1": "assets/figma/about-Bg1.png",
+    "imgBgAssets": "assets/figma/about-BgAssets.png",
+    "imgMiniBubble": "assets/figma/about-MiniBubble.png",
+    "imgMiniBubble1": "assets/figma/about-MiniBubble1.png",
+    "imgMiniBubble2": "assets/figma/about-MiniBubble2.png",
+    "imgMiniBubble3": "assets/figma/about-MiniBubble3.png",
+    "imgDataIconImg": "assets/figma/about-DataIconImg.png"
   }
 }
