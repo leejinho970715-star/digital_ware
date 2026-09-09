@@ -211,23 +211,15 @@
   gap: 14px;
   padding: clamp(32px, 4vw, 72px);
   min-height: 100%;
-  color: #ffffff;
+  color: #1d1d1f;
   background-size: cover;
   background-position: center;
-  background-color: #0a1117;
-  filter: brightness(0.83) saturate(0.95) contrast(1.04);
+  background-color: #dff7f7;
+  filter: none;
   overflow: hidden;
 }
 .dw-auth-copy::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    90deg,
-    rgba(4, 8, 14, 0.22),
-    rgba(4, 8, 14, 0.18) 38%,
-    rgba(4, 8, 14, 0.12)
-  );
+  content: none;
 }
 .dw-auth-copy > * {
   position: relative;
@@ -238,19 +230,19 @@
   letter-spacing: 0.2em;
   text-transform: uppercase;
   opacity: 1;
-  color: #ffffff;
+  color: #1d1d1f;
 }
 .dw-auth-copy h2 {
   max-width: 440px;
   font-size: clamp(2rem, 2.8vw, 3.2rem);
   line-height: 1.1;
-  color: #ffffff;
+  color: #1d1d1f;
 }
 .dw-auth-copy span {
   max-width: 320px;
   font-size: calc(18 * var(--u));
   line-height: 1.6;
-  color: #ffffff;
+  color: #1d1d1f;
 }
 .dw-card-bubble {
   position: absolute;
