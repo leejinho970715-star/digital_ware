@@ -27,16 +27,42 @@ export function useMotion(root: RefObject<HTMLDivElement | null>) {
           element.querySelectorAll<HTMLElement>("[data-count]"),
         ).map((el) => ({ el, text: el.textContent }));
         const context = gsap.context(() => {
-          gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((el) => {
-            gsap.from(el, {
-              y: 34,
+          const cardSelector = [
+            ".dw-card",
+            ".dw-location-card",
+            ".dw-notice-detail",
+            ".dw-content-ready",
+          ].join(",");
+
+          gsap.utils.toArray<HTMLElement>(cardSelector).forEach((card) => {
+            gsap.from(card, {
+              y: 88,
+              scale: 0.94,
               opacity: 0,
-              duration: 0.85,
-              ease: "power2.out",
-              scrollTrigger: { trigger: el, start: "top 94%", once: true },
+              duration: 1,
+              ease: "back.out(1.8)",
+              scrollTrigger: {
+                trigger: card,
+                start: "top 92%",
+                once: true,
+              },
               clearProps: "transform,opacity",
             });
           });
+
+          gsap.utils
+            .toArray<HTMLElement>("[data-reveal]")
+            .filter((el) => !el.matches(cardSelector))
+            .forEach((el) => {
+              gsap.from(el, {
+                y: 34,
+                opacity: 0,
+                duration: 0.85,
+                ease: "power2.out",
+                scrollTrigger: { trigger: el, start: "top 94%", once: true },
+                clearProps: "transform,opacity",
+              });
+            });
           gsap.utils.toArray<HTMLElement>("[data-button]").forEach((el) => {
             gsap.from(el, {
               rotation: -3,
