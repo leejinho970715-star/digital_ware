@@ -214,17 +214,26 @@
   color: #1d1d1f !important;
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   background-color: #dff7f7;
-  filter: none;
+  filter: none !important;
+  -webkit-filter: none !important;
+  backdrop-filter: none !important;
+  mix-blend-mode: normal !important;
+  opacity: 1 !important;
   overflow: hidden;
 }
+.dw-auth-copy::before,
 .dw-auth-copy::after {
-  content: none;
+  content: none !important;
+  display: none !important;
 }
 .dw-auth-copy > * {
   position: relative;
   z-index: 1;
   color: #1d1d1f !important;
+  filter: none !important;
+  -webkit-filter: none !important;
 }
 .dw-auth-copy p,
 .dw-auth-copy h2,
@@ -238,6 +247,8 @@
 .dw-auth-copy label,
 .dw-auth-copy div {
   color: #1d1d1f !important;
+  filter: none !important;
+  -webkit-filter: none !important;
 }
 .dw-auth-copy p {
   font-size: calc(14 * var(--u));

@@ -479,7 +479,7 @@ function Auth({ signup = false }: { signup?: boolean }) {
         <div
           className={`dw-auth-copy ${signup ? "dw-auth-copy-signup" : "dw-auth-copy-login"}`}
           style={{
-            backgroundImage: `url(${import.meta.env.BASE_URL}assets/${signup ? "signup-bg.png" : "login-bg.png"})`,
+            backgroundImage: `url(${import.meta.env.BASE_URL}assets/${signup ? "signup-bg.png" : "login-bg.png"}?v=auth-banner-20260909)`,
           }}
         >
           <p>WELCOME TO</p>
