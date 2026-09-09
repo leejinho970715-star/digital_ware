@@ -3085,11 +3085,27 @@
     align-items: stretch;
     flex-direction: column;
   }
+  .dw-board-tools label {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 76px;
+    width: 100%;
+  }
   .dw-board-tools select {
-    width: 120px;
-    flex-basis: 120px;
+    grid-column: 1 / -1;
+    width: 100%;
+    min-height: 50px;
+    border-right: 0;
+    border-bottom: 1px solid #d7dfe1;
     padding-right: 32px;
     padding-left: 16px;
+  }
+  .dw-board-tools input {
+    min-height: 54px;
+    padding-inline: 16px;
+  }
+  .dw-board-tools button {
+    width: 76px;
+    min-height: 54px;
   }
   .dw-board-head {
     display: none;
