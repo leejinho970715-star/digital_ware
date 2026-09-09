@@ -45,13 +45,13 @@ const pages: Record<
     crumb: ["기업소개", "오시는 길"],
   },
   login: {
-    hero: "login_bg.png",
+    hero: "member.png",
     section: "Member",
     title: "로그인",
     crumb: ["Member", "로그인"],
   },
   signup: {
-    hero: "sign_bg.png",
+    hero: "member.png",
     section: "Member",
     title: "회원가입",
     crumb: ["Member", "회원가입"],
@@ -479,7 +479,7 @@ function Auth({ signup = false }: { signup?: boolean }) {
         <div
           className={`dw-auth-copy ${signup ? "dw-auth-copy-signup" : "dw-auth-copy-login"}`}
           style={{
-            backgroundImage: `url(${import.meta.env.BASE_URL}assets/${signup ? "signup-bg.png" : "login-bg.png"}?v=auth-banner-20260909)`,
+            backgroundImage: `url(${import.meta.env.BASE_URL}assets/subvisual/${signup ? "sign_bg.png" : "login_bg.png"})`,
           }}
         >
           <p>WELCOME TO</p>
