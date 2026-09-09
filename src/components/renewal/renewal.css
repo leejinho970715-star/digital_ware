@@ -211,7 +211,7 @@
   gap: 14px;
   padding: clamp(32px, 4vw, 72px);
   min-height: 100%;
-  color: #1d1d1f;
+  color: #1d1d1f !important;
   background-size: cover;
   background-position: center;
   background-color: #dff7f7;
@@ -224,25 +224,36 @@
 .dw-auth-copy > * {
   position: relative;
   z-index: 1;
+  color: #1d1d1f !important;
+}
+.dw-auth-copy p,
+.dw-auth-copy h2,
+.dw-auth-copy span,
+.dw-auth-copy strong,
+.dw-auth-copy em,
+.dw-auth-copy b,
+.dw-auth-copy i,
+.dw-auth-copy a,
+.dw-auth-copy small,
+.dw-auth-copy label,
+.dw-auth-copy div {
+  color: #1d1d1f !important;
 }
 .dw-auth-copy p {
   font-size: calc(14 * var(--u));
   letter-spacing: 0.2em;
   text-transform: uppercase;
   opacity: 1;
-  color: #1d1d1f;
 }
 .dw-auth-copy h2 {
   max-width: 440px;
   font-size: clamp(2rem, 2.8vw, 3.2rem);
   line-height: 1.1;
-  color: #1d1d1f;
 }
 .dw-auth-copy span {
   max-width: 320px;
   font-size: calc(18 * var(--u));
   line-height: 1.6;
-  color: #1d1d1f;
 }
 .dw-card-bubble {
   position: absolute;
