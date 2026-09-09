@@ -45,13 +45,13 @@ const pages: Record<
     crumb: ["기업소개", "오시는 길"],
   },
   login: {
-    hero: "member.png",
+    hero: "login_bg.png",
     section: "Member",
     title: "로그인",
     crumb: ["Member", "로그인"],
   },
   signup: {
-    hero: "member.png",
+    hero: "sign_bg.png",
     section: "Member",
     title: "회원가입",
     crumb: ["Member", "회원가입"],
