@@ -2837,26 +2837,27 @@
   padding: 50px;
   background-position: center;
   background-size: cover;
-  box-shadow: inset 0 0 0 9999px rgba(5, 20, 38, 0.22);
-  color: #fff;
+  background-repeat: no-repeat;
+  box-shadow: none;
+  color: #1d1d1f;
 }
-.dw-auth-copy-login {
-  background-color: #0d9488;
-}
+.dw-auth-copy-login,
 .dw-auth-copy-signup {
-  background-color: #0d9488;
+  background-color: transparent;
 }
 .dw-auth-copy p {
   font-size: 13px;
   letter-spacing: 0.16em;
+  color: #1d1d1f;
 }
 .dw-auth-copy h2 {
   margin: 12px 0 25px;
   font-size: 31px;
+  color: #1d1d1f;
 }
 .dw-auth-copy span {
   line-height: 1.7;
-  color: rgba(255, 255, 255, 0.78);
+  color: #1d1d1f;
 }
 .dw-auth-panel form {
   display: flex;
