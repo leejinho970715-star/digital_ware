@@ -182,12 +182,16 @@ const Input = ({
   type = "text",
   placeholder = "",
   defaultValue,
+  value,
+  onChange,
 }: {
   label: string;
   required?: boolean;
   type?: string;
   placeholder?: string;
   defaultValue?: string;
+  value?: string;
+  onChange?: (value: string) => void;
 }) => (
   <label>
     <span>
@@ -198,7 +202,9 @@ const Input = ({
       type={type}
       required={required}
       placeholder={placeholder}
-      defaultValue={defaultValue}
+      defaultValue={value === undefined ? defaultValue : undefined}
+      value={value}
+      onChange={value === undefined ? undefined : (event) => onChange?.(event.target.value)}
     />
   </label>
 );
@@ -611,6 +617,14 @@ export function MyPage() {
   const navigate = useNavigate();
   const authenticated = useDemoAuth();
   const [tab, setTab] = useState<MyPageTab>("profile");
+  const [member, setMember] = useState({
+    name: "이윤규",
+    email: "demo@idigitalware.com",
+    phone: "010-4029-2697",
+  });
+  const [profileDraft, setProfileDraft] = useState({ name: "", phone: "" });
+  const [emailDraft, setEmailDraft] = useState({ current: "", next: "" });
+  const [savedMessage, setSavedMessage] = useState<"profile" | "email" | null>(null);
 
   useEffect(() => {
     if (!authenticated) navigate("/login", { replace: true });
@@ -634,10 +648,10 @@ export function MyPage() {
       <div className="dw-mypage-layout">
         <aside className="dw-mypage-nav dw-card" aria-label="마이페이지 메뉴">
           <div className="dw-mypage-user">
-            <span aria-hidden="true">이</span>
+            <span aria-hidden="true">{member.name.trim().charAt(0) || "이"}</span>
             <div>
-              <strong>이윤규</strong>
-              <small>demo@idigitalware.com</small>
+              <strong>{member.name}</strong>
+              <small>{member.email}</small>
             </div>
           </div>
           {([
@@ -660,25 +674,85 @@ export function MyPage() {
         <div className="dw-mypage-main">
           {tab === "profile" && (
             <>
-              <form className="dw-mypage-card dw-card" onSubmit={(e) => e.preventDefault()}>
+              <form
+                className="dw-mypage-card dw-card"
+                onSubmit={(event) => {
+                  event.preventDefault();
+                  setMember((current) => ({
+                    ...current,
+                    name: profileDraft.name.trim() || current.name,
+                    phone: profileDraft.phone.trim() || current.phone,
+                  }));
+                  setSavedMessage("profile");
+                }}
+              >
                 <header>
                   <h2>기본 정보</h2>
                   <p>회원님의 기본 정보를 확인하고 수정할 수 있습니다.</p>
                 </header>
-                <Input label="이메일" type="email" defaultValue="demo@idigitalware.com" />
+                <Input label="이메일" type="email" placeholder="ex) example@idigitalware.com" />
                 <small>이메일 변경은 아래 변경 폼을 이용해주세요.</small>
-                <Input label="이름" defaultValue="이윤규" />
-                <Input label="전화번호" defaultValue="010-4029-2697" />
+                <Input
+                  label="이름"
+                  placeholder="ex) 이름을 입력해주세요."
+                  value={profileDraft.name}
+                  onChange={(name) => {
+                    setProfileDraft((current) => ({ ...current, name }));
+                    setSavedMessage(null);
+                  }}
+                />
+                <Input
+                  label="전화번호"
+                  placeholder="ex) 010-0000-0000"
+                  value={profileDraft.phone}
+                  onChange={(phone) => {
+                    setProfileDraft((current) => ({ ...current, phone }));
+                    setSavedMessage(null);
+                  }}
+                />
                 <button className="dw-submit" type="submit">정보 수정</button>
+                {savedMessage === "profile" && (
+                  <p className="dw-mypage-success" role="status">수정 반영되었습니다.</p>
+                )}
               </form>
-              <form className="dw-mypage-card dw-card" onSubmit={(e) => e.preventDefault()}>
+              <form
+                className="dw-mypage-card dw-card"
+                onSubmit={(event) => {
+                  event.preventDefault();
+                  const nextEmail = emailDraft.next.trim();
+                  if (nextEmail) setMember((current) => ({ ...current, email: nextEmail }));
+                  setEmailDraft((current) => ({ current: nextEmail || current.current, next: "" }));
+                  setSavedMessage("email");
+                }}
+              >
                 <header>
                   <h2>이메일 변경</h2>
                   <p>이메일을 변경하면 프로필의 연락처 이메일이 업데이트됩니다.</p>
                 </header>
-                <Input label="현재 이메일" type="email" defaultValue="demo@idigitalware.com" />
-                <Input label="새 이메일" type="email" defaultValue="new-email@idigitalware.com" />
+                <Input
+                  label="현재 이메일"
+                  type="email"
+                  placeholder="ex) current@example.com"
+                  value={emailDraft.current}
+                  onChange={(current) => {
+                    setEmailDraft((draft) => ({ ...draft, current }));
+                    setSavedMessage(null);
+                  }}
+                />
+                <Input
+                  label="새 이메일"
+                  type="email"
+                  placeholder="ex) new@example.com"
+                  value={emailDraft.next}
+                  onChange={(next) => {
+                    setEmailDraft((draft) => ({ ...draft, next }));
+                    setSavedMessage(null);
+                  }}
+                />
                 <button className="dw-submit dw-submit-outline" type="submit">이메일 변경</button>
+                {savedMessage === "email" && (
+                  <p className="dw-mypage-success" role="status">수정 반영되었습니다.</p>
+                )}
               </form>
             </>
           )}
@@ -688,9 +762,9 @@ export function MyPage() {
                 <h2>비밀번호 변경</h2>
                 <p>계정 보호를 위해 새로운 비밀번호를 설정하세요.</p>
               </header>
-              <Input label="현재 비밀번호" type="password" defaultValue="demo1234!" />
-              <Input label="새 비밀번호" type="password" defaultValue="newDemo1234!" />
-              <Input label="새 비밀번호 확인" type="password" defaultValue="newDemo1234!" />
+              <Input label="현재 비밀번호" type="password" placeholder="ex) 현재 비밀번호를 입력해주세요." />
+              <Input label="새 비밀번호" type="password" placeholder="ex) 새 비밀번호를 입력해주세요." />
+              <Input label="새 비밀번호 확인" type="password" placeholder="ex) 새 비밀번호를 다시 입력해주세요." />
               <button className="dw-submit" type="submit">비밀번호 변경</button>
             </form>
           )}

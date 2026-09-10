@@ -137,7 +137,7 @@
   gap: calc(24 * var(--u));
   flex-wrap: wrap;
 }
-.dw-button {
+.dw-renewal .dw-button {
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -156,14 +156,14 @@
     box-shadow 0.25s;
   white-space: nowrap;
 }
-.dw-button:hover {
+.dw-renewal .dw-button:hover {
   background: #0b8076;
   box-shadow: 0 6px 24px #0d948832;
 }
-.dw-button-dark {
+.dw-renewal .dw-button-dark {
   background: var(--navy);
 }
-.dw-button-dark:hover {
+.dw-renewal .dw-button-dark:hover {
   background: #303e54;
 }
 .dw-card {
@@ -3021,9 +3021,15 @@
   border-radius: 8px;
   background: #fbfcfc;
   padding: 0 16px;
-  color: #344247;
+  color: #7c888d;
   font: inherit;
+  font-weight: 400;
   outline: none;
+}
+.dw-mypage-card input::placeholder {
+  color: #98a2a6;
+  font-weight: 400;
+  opacity: 1;
 }
 .dw-mypage-card input:focus {
   border-color: var(--teal);
@@ -3044,6 +3050,13 @@
   background: #fff !important;
   color: var(--teal) !important;
   box-shadow: none;
+}
+.dw-mypage-success {
+  justify-self: start;
+  margin: -8px 0 0;
+  color: var(--teal);
+  font-size: 15px;
+  font-weight: 600;
 }
 .dw-mypage-empty {
   display: grid;
