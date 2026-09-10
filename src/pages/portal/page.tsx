@@ -1,5 +1,5 @@
 import { useEffect, useState, type FormEvent, type ReactNode } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Layout from "../../components/renewal/Layout";
 import { SiteLink } from "../../components/renewal/ui";
 import {
@@ -210,11 +210,41 @@ const Input = ({
 );
 
 const notices = [
-  ["2026 클라우드 정부지원 사업", "2026-04-02"],
-  ["2026 인천 기초형 스마트공장 구축 지원사업", "2026-03-20"],
-  ["2026년도 중소기업 클라우드 서비스 보급 확산사업 공고", "2026-02-24"],
-  ["2025년 AI바우처 지원사업(AI바우처 분과) 공모", "2025-02-17"],
-  ["2026년 일·생활균형 시스템 지원사업", "2026-02-05"],
+  {
+    id: 5,
+    title: "2026 클라우드 정부지원 사업",
+    date: "2026-04-02",
+    description: "2026년 클라우드 정부지원 사업 공고입니다.",
+    period: "2026년 4월 1일 ~ 2026년 6월 30일",
+  },
+  {
+    id: 4,
+    title: "2026 인천 기초형 스마트공장 구축 지원사업",
+    date: "2026-03-20",
+    description: "인천 지역 중소기업을 위한 기초형 스마트공장 구축 지원사업 공고입니다.",
+    period: "2026년 3월 20일 ~ 2026년 5월 29일",
+  },
+  {
+    id: 3,
+    title: "2026년도 중소기업 클라우드 서비스 보급 확산사업 공고",
+    date: "2026-02-24",
+    description: "중소기업의 디지털 전환을 지원하는 클라우드 서비스 보급 확산사업 공고입니다.",
+    period: "2026년 2월 24일 ~ 2026년 4월 30일",
+  },
+  {
+    id: 2,
+    title: "2025년 AI바우처 지원사업(AI바우처 분과) 공모",
+    date: "2025-02-17",
+    description: "AI 솔루션 도입을 지원하는 2025년 AI바우처 지원사업 공고입니다.",
+    period: "2025년 2월 17일 ~ 2025년 4월 18일",
+  },
+  {
+    id: 1,
+    title: "2026년 일·생활균형 시스템 지원사업",
+    date: "2026-02-05",
+    description: "기업의 업무환경 개선을 위한 일·생활균형 시스템 지원사업 공고입니다.",
+    period: "2026년 2월 5일 ~ 2026년 3월 31일",
+  },
 ];
 
 export function GovernmentNotice() {
@@ -240,18 +270,18 @@ export function GovernmentNotice() {
           <span>제목</span>
           <span>등록일</span>
         </div>
-        {notices.map((n, i) => (
+        {notices.map((notice) => (
           <SiteLink
             className="dw-board-row"
-            to={`/government-notice/${notices.length - i}`}
-            key={n[0]}
+            to={`/government-notice/${notice.id}`}
+            key={notice.id}
           >
-            <span>{notices.length - i}</span>
+            <span>{notice.id}</span>
             <div>
               <b>공지</b>
-              <h2>{n[0]}</h2>
+              <h2>{notice.title}</h2>
             </div>
-            <time>{n[1]}</time>
+            <time>{notice.date}</time>
           </SiteLink>
         ))}
       </div>
@@ -260,13 +290,20 @@ export function GovernmentNotice() {
 }
 
 export function GovernmentNoticeDetail() {
+  const { id } = useParams();
+  const currentIndex = notices.findIndex((notice) => notice.id === Number(id));
+  const safeIndex = currentIndex >= 0 ? currentIndex : 0;
+  const notice = notices[safeIndex];
+  const previousNotice = notices[safeIndex - 1];
+  const nextNotice = notices[safeIndex + 1];
+
   return (
     <Shell page="government">
       <article className="dw-notice-detail">
         <header>
-          <h2>2026 클라우드 정부지원 사업</h2>
+          <h2>{notice.title}</h2>
           <div>
-            <span>등록일 2026-04-02</span>
+            <span>등록일 {notice.date}</span>
             <span>조회수 743</span>
           </div>
         </header>
@@ -275,7 +312,7 @@ export function GovernmentNoticeDetail() {
             <strong>아이원디지털웨어㈜ 공지사항</strong>
             <p>정부지원 사업 안내입니다.</p>
           </aside>
-          <p>2026년 클라우드 정부지원 사업 공고입니다.</p>
+          <p>{notice.description}</p>
           <ul>
             <li>
               <b>지원대상</b> 중소·중견기업 및 소상공인 · 클라우드 도입을
@@ -286,7 +323,7 @@ export function GovernmentNoticeDetail() {
               기술지원 · 사후 관리 서비스
             </li>
             <li>
-              <b>신청기간</b> 2026년 4월 1일 ~ 2026년 6월 30일
+              <b>신청기간</b> {notice.period}
             </li>
             <li>
               <b>문의처</b> 아이원디지털웨어㈜ 정부지원사업팀 Tel: 070-4497-3634
@@ -297,14 +334,29 @@ export function GovernmentNoticeDetail() {
       <div className="dw-post-nav">
         <p>
           <b>이전글</b>
-          <span>이전글이 없습니다.</span>
+          {previousNotice ? (
+            <>
+              <SiteLink to={`/government-notice/${previousNotice.id}`}>
+                {previousNotice.title}
+              </SiteLink>
+              <time>{previousNotice.date}</time>
+            </>
+          ) : (
+            <span>이전글이 없습니다.</span>
+          )}
         </p>
         <p>
           <b>다음글</b>
-          <SiteLink to="/government-notice/4">
-            2025년 AI바우처 지원사업 공모
-          </SiteLink>
-          <time>2025-02-17</time>
+          {nextNotice ? (
+            <>
+              <SiteLink to={`/government-notice/${nextNotice.id}`}>
+                {nextNotice.title}
+              </SiteLink>
+              <time>{nextNotice.date}</time>
+            </>
+          ) : (
+            <span>다음글이 없습니다.</span>
+          )}
         </p>
       </div>
       <div className="dw-center">
