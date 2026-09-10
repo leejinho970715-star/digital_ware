@@ -2899,14 +2899,21 @@
   font-weight: 700;
 }
 .dw-mypage-heading {
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 24px;
   margin: -28px 0 48px;
   color: #687176;
 }
+.dw-mypage-heading p {
+  width: 100%;
+  text-align: center;
+}
 .dw-mypage-logout {
+  position: absolute;
+  right: 0;
   flex: 0 0 auto;
   min-height: 44px;
   border: 1px solid #d7e0e1 !important;
@@ -3386,12 +3393,16 @@
     font-size: 25px;
   }
   .dw-mypage-heading {
-    align-items: flex-start;
+    flex-direction: column;
     margin-top: -16px;
   }
   .dw-mypage-heading p {
-    max-width: 210px;
+    max-width: none;
     line-height: 1.5;
+  }
+  .dw-mypage-logout {
+    position: static;
+    align-self: center;
   }
   .dw-mypage-nav {
     grid-template-columns: 1fr;
