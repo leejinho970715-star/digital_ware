@@ -676,7 +676,9 @@ export function MyPage() {
   });
   const [profileDraft, setProfileDraft] = useState({ name: "", phone: "" });
   const [emailDraft, setEmailDraft] = useState({ current: "", next: "" });
-  const [savedMessage, setSavedMessage] = useState<"profile" | "email" | null>(null);
+  const [savedMessage, setSavedMessage] = useState<
+    "profile" | "email" | "password" | null
+  >(null);
 
   useEffect(() => {
     if (!authenticated) navigate("/login", { replace: true });
@@ -809,7 +811,13 @@ export function MyPage() {
             </>
           )}
           {tab === "password" && (
-            <form className="dw-mypage-card dw-card" onSubmit={(e) => e.preventDefault()}>
+            <form
+              className="dw-mypage-card dw-card"
+              onSubmit={(event) => {
+                event.preventDefault();
+                setSavedMessage("password");
+              }}
+            >
               <header>
                 <h2>비밀번호 변경</h2>
                 <p>계정 보호를 위해 새로운 비밀번호를 설정하세요.</p>
@@ -818,6 +826,9 @@ export function MyPage() {
               <Input label="새 비밀번호" type="password" placeholder="ex) 새 비밀번호를 입력해주세요." />
               <Input label="새 비밀번호 확인" type="password" placeholder="ex) 새 비밀번호를 다시 입력해주세요." />
               <button className="dw-submit" type="submit">비밀번호 변경</button>
+              {savedMessage === "password" && (
+                <p className="dw-mypage-success" role="status">수정 반영되었습니다.</p>
+              )}
             </form>
           )}
           {tab === "inquiries" && (
