@@ -13,6 +13,7 @@ import {
   GovernmentNoticeDetail,
   Location,
   Login,
+  MyPage,
   PurchaseInquiry,
   Signup,
 } from "./pages/portal/page";
@@ -36,6 +37,7 @@ export default function App() {
       <Route path="/location" element={<Location />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
+      <Route path="/mypage" element={<MyPage />} />
       <Route
         path="*"
         element={

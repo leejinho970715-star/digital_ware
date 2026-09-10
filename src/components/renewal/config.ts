@@ -13,6 +13,7 @@ export const serviceRoutes = [
   "/location",
   "/login",
   "/signup",
+  "/mypage",
 ];
 export const contactPhone = "1877-0256"; // As specified by the supplied Figma contact sections.
 export const socialLinks = [

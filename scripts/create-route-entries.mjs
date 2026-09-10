@@ -17,6 +17,7 @@ for (const route of [
   "location",
   "login",
   "signup",
+  "mypage",
 ]) {
   await mkdir(`out/${route}`, { recursive: true });
   await writeFile(`out/${route}/index.html`, html);

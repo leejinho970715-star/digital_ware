@@ -1,6 +1,11 @@
-import { useState, type FormEvent, type ReactNode } from "react";
+import { useEffect, useState, type FormEvent, type ReactNode } from "react";
+import { useNavigate } from "react-router-dom";
 import Layout from "../../components/renewal/Layout";
 import { SiteLink } from "../../components/renewal/ui";
+import {
+  setDemoAuthenticated,
+  useDemoAuth,
+} from "../../components/renewal/auth";
 
 type PageKey =
   | "government"
@@ -9,52 +14,90 @@ type PageKey =
   | "customer"
   | "location"
   | "login"
-  | "signup";
+  | "signup"
+  | "mypage";
 const pages: Record<
   PageKey,
-  { hero: string; section: string; title: string; crumb: string[] }
+  {
+    hero: string;
+    section: string;
+    title: string;
+    crumb: string[];
+    heroTitle?: string;
+    heroDescription?: string;
+  }
 > = {
   government: {
-    hero: "government.png",
+    hero: "mypage-bg.png",
     section: "정부지원사업",
     title: "공지사항",
     crumb: ["정부지원사업", "공지사항"],
+    heroTitle: "GOVERNMENT SUPPORT PROJECT",
+    heroDescription:
+      "기업을 위한 모든 ICT Solution과 Service를 제공하는 아이원디지털웨어㈜",
   },
   inquiry: {
-    hero: "purchase.png",
+    hero: "mypage-bg.png",
     section: "구입 및 제휴문의",
     title: "제품/서비스 구매상담",
     crumb: ["구입 및 제휴문의", "제품/서비스 구매상담"],
+    heroTitle: "Purchase Inquiry",
+    heroDescription:
+      "기업을 위한 모든 ICT Solution과 Service를 제공하는 아이원디지털웨어㈜",
   },
   business: {
-    hero: "business.png",
+    hero: "mypage-bg.png",
     section: "구입 및 제휴문의",
     title: "비즈니스 제휴 문의",
     crumb: ["구입 및 제휴문의", "비즈니스 제휴 문의"],
+    heroTitle: "Business Partnership Inquiry",
+    heroDescription:
+      "기업을 위한 모든 ICT Solution과 Service를 제공하는 아이원디지털웨어㈜",
   },
   customer: {
-    hero: "customer.png",
+    hero: "mypage-bg.png",
     section: "고객센터",
     title: "1:1 사용문의",
     crumb: ["고객센터", "1:1 사용문의"],
+    heroTitle: "Customer Center",
+    heroDescription:
+      "기업을 위한 모든 ICT Solution과 Service를 제공하는 아이원디지털웨어㈜",
   },
   location: {
-    hero: "customer.png",
+    hero: "mypage-bg.png",
     section: "기업소개",
     title: "오시는 길",
     crumb: ["기업소개", "오시는 길"],
+    heroTitle: "Location",
+    heroDescription:
+      "기업을 위한 모든 ICT Solution과 Service를 제공하는 아이원디지털웨어㈜",
   },
   login: {
-    hero: "member.png",
+    hero: "mypage-bg.png",
     section: "Member",
     title: "로그인",
     crumb: ["Member", "로그인"],
+    heroTitle: "Member",
+    heroDescription:
+      "기업을 위한 모든 ICT Solution과 Service를 제공하는 아이원디지털웨어㈜",
   },
   signup: {
-    hero: "member.png",
+    hero: "mypage-bg.png",
     section: "Member",
     title: "회원가입",
     crumb: ["Member", "회원가입"],
+    heroTitle: "Member",
+    heroDescription:
+      "기업을 위한 모든 ICT Solution과 Service를 제공하는 아이원디지털웨어㈜",
+  },
+  mypage: {
+    hero: "mypage-bg.png",
+    section: "Member",
+    title: "마이페이지",
+    crumb: ["마이페이지"],
+    heroTitle: "My Page",
+    heroDescription:
+      "기업을 위한 모든 ICT Solution과 Service를 제공하는 아이원디지털웨어㈜",
   },
 };
 
@@ -68,7 +111,14 @@ function Shell({ page, children }: { page: PageKey; children: ReactNode }) {
           backgroundImage: `url(${import.meta.env.BASE_URL}assets/subvisual/${info.hero})`,
         }}
         aria-label={info.section}
-      />
+      >
+        {info.heroTitle && (
+          <div className="dw-portal-hero-copy">
+            <h2>{info.heroTitle}</h2>
+            <p>{info.heroDescription}</p>
+          </div>
+        )}
+      </section>
       <nav className="dw-breadcrumb" aria-label="현재 위치">
         <div className="dw-container">
           <SiteLink to="/" aria-label="홈">
@@ -131,18 +181,25 @@ const Input = ({
   required = false,
   type = "text",
   placeholder = "",
+  defaultValue,
 }: {
   label: string;
   required?: boolean;
   type?: string;
   placeholder?: string;
+  defaultValue?: string;
 }) => (
   <label>
     <span>
       {label}
       {required && <em>*</em>}
     </span>
-    <input type={type} required={required} placeholder={placeholder} />
+    <input
+      type={type}
+      required={required}
+      placeholder={placeholder}
+      defaultValue={defaultValue}
+    />
   </label>
 );
 
@@ -473,6 +530,12 @@ export function Location() {
 }
 
 function Auth({ signup = false }: { signup?: boolean }) {
+  const navigate = useNavigate();
+  const submit = (event: FormEvent) => {
+    event.preventDefault();
+    setDemoAuthenticated(true);
+    navigate("/mypage");
+  };
   return (
     <Shell page={signup ? "signup" : "login"}>
       <div className="dw-auth-panel dw-card">
@@ -490,14 +553,29 @@ function Auth({ signup = false }: { signup?: boolean }) {
               : "등록한 계정으로 로그인하세요."}
           </span>
         </div>
-        <form onSubmit={(e) => e.preventDefault()}>
-          {signup && <Input label="이름" required />}
-          <Input label="이메일" type="email" required />
-          <Input label="비밀번호" type="password" required />
+        <form onSubmit={submit}>
+          {signup && <Input label="이름" required defaultValue="이윤규" />}
+          <Input
+            label="이메일"
+            type="email"
+            required
+            defaultValue="demo@idigitalware.com"
+          />
+          <Input
+            label="비밀번호"
+            type="password"
+            required
+            defaultValue="demo1234!"
+          />
           {signup && (
             <>
-              <Input label="비밀번호 확인" type="password" required />
-              <Input label="휴대폰 번호" required />
+              <Input
+                label="비밀번호 확인"
+                type="password"
+                required
+                defaultValue="demo1234!"
+              />
+              <Input label="휴대폰 번호" required defaultValue="010-4029-2697" />
               <label className="dw-agree">
                 <input required type="checkbox" /> 이용약관과 개인정보처리방침에
                 동의합니다.
@@ -526,3 +604,111 @@ function Auth({ signup = false }: { signup?: boolean }) {
 }
 export const Login = () => <Auth />;
 export const Signup = () => <Auth signup />;
+
+type MyPageTab = "profile" | "password" | "inquiries";
+
+export function MyPage() {
+  const navigate = useNavigate();
+  const authenticated = useDemoAuth();
+  const [tab, setTab] = useState<MyPageTab>("profile");
+
+  useEffect(() => {
+    if (!authenticated) navigate("/login", { replace: true });
+  }, [authenticated, navigate]);
+
+  if (!authenticated) return null;
+
+  const logout = () => {
+    setDemoAuthenticated(false);
+    navigate("/");
+  };
+
+  return (
+    <Shell page="mypage">
+      <div className="dw-mypage-heading">
+        <p>회원님의 계정 정보를 확인하고 관리할 수 있습니다.</p>
+        <button type="button" className="dw-mypage-logout" onClick={logout}>
+          로그아웃
+        </button>
+      </div>
+      <div className="dw-mypage-layout">
+        <aside className="dw-mypage-nav dw-card" aria-label="마이페이지 메뉴">
+          <div className="dw-mypage-user">
+            <span aria-hidden="true">이</span>
+            <div>
+              <strong>이윤규</strong>
+              <small>demo@idigitalware.com</small>
+            </div>
+          </div>
+          {([
+            ["profile", "회원정보 관리"],
+            ["password", "비밀번호 변경"],
+            ["inquiries", "내 문의내역"],
+          ] as const).map(([key, label]) => (
+            <button
+              type="button"
+              key={key}
+              className={tab === key ? "is-active" : ""}
+              onClick={() => setTab(key)}
+            >
+              <span aria-hidden="true">{key === "profile" ? "♙" : key === "password" ? "▢" : "▤"}</span>
+              {label}
+            </button>
+          ))}
+        </aside>
+
+        <div className="dw-mypage-main">
+          {tab === "profile" && (
+            <>
+              <form className="dw-mypage-card dw-card" onSubmit={(e) => e.preventDefault()}>
+                <header>
+                  <h2>기본 정보</h2>
+                  <p>회원님의 기본 정보를 확인하고 수정할 수 있습니다.</p>
+                </header>
+                <Input label="이메일" type="email" defaultValue="demo@idigitalware.com" />
+                <small>이메일 변경은 아래 변경 폼을 이용해주세요.</small>
+                <Input label="이름" defaultValue="이윤규" />
+                <Input label="전화번호" defaultValue="010-4029-2697" />
+                <button className="dw-submit" type="submit">정보 수정</button>
+              </form>
+              <form className="dw-mypage-card dw-card" onSubmit={(e) => e.preventDefault()}>
+                <header>
+                  <h2>이메일 변경</h2>
+                  <p>이메일을 변경하면 프로필의 연락처 이메일이 업데이트됩니다.</p>
+                </header>
+                <Input label="현재 이메일" type="email" defaultValue="demo@idigitalware.com" />
+                <Input label="새 이메일" type="email" defaultValue="new-email@idigitalware.com" />
+                <button className="dw-submit dw-submit-outline" type="submit">이메일 변경</button>
+              </form>
+            </>
+          )}
+          {tab === "password" && (
+            <form className="dw-mypage-card dw-card" onSubmit={(e) => e.preventDefault()}>
+              <header>
+                <h2>비밀번호 변경</h2>
+                <p>계정 보호를 위해 새로운 비밀번호를 설정하세요.</p>
+              </header>
+              <Input label="현재 비밀번호" type="password" defaultValue="demo1234!" />
+              <Input label="새 비밀번호" type="password" defaultValue="newDemo1234!" />
+              <Input label="새 비밀번호 확인" type="password" defaultValue="newDemo1234!" />
+              <button className="dw-submit" type="submit">비밀번호 변경</button>
+            </form>
+          )}
+          {tab === "inquiries" && (
+            <section className="dw-mypage-card dw-card">
+              <header>
+                <h2>내 문의내역</h2>
+                <p>접수한 문의와 답변 상태를 확인할 수 있습니다.</p>
+              </header>
+              <div className="dw-mypage-empty">
+                <span aria-hidden="true">▤</span>
+                <strong>등록된 문의내역이 없습니다.</strong>
+                <SiteLink to="/customer-as">1:1 사용문의 바로가기 →</SiteLink>
+              </div>
+            </section>
+          )}
+        </div>
+      </div>
+    </Shell>
+  );
+}

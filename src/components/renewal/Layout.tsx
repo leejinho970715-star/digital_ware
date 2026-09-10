@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Art, SiteLink } from "./ui";
 import { socialLinks } from "./config";
 import { useMotion } from "./useMotion";
 import Chatbot from "./Chatbot";
 import LegalModal, { type LegalKind } from "./LegalModal";
+import { setDemoAuthenticated, useDemoAuth } from "./auth";
 import "./renewal.css";
 
 function Header() {
@@ -12,6 +13,8 @@ function Header() {
   const [services, setServices] = useState(false);
   const [submenu, setSubmenu] = useState("");
   const location = useLocation();
+  const navigate = useNavigate();
+  const authenticated = useDemoAuth();
   const menuButton = useRef<HTMLButtonElement>(null);
   useEffect(() => {
     setOpen(false);
@@ -122,14 +125,36 @@ function Header() {
             </div>
           ))}
           <div className="dw-auth">
-            <SiteLink to="/login" className="dw-button">
-              <Art name="imgLucideLogIn" />
-              로그인
-            </SiteLink>
-            <SiteLink to="/signup" className="dw-button dw-button-dark">
-              <Art name="imgLucideUserRoundPlus" />
-              회원가입
-            </SiteLink>
+            {authenticated ? (
+              <>
+                <SiteLink to="/mypage" className="dw-button">
+                  <Art name="imgLucideUserRoundPlus" />
+                  마이페이지
+                </SiteLink>
+                <button
+                  type="button"
+                  className="dw-button dw-button-dark"
+                  onClick={() => {
+                    setDemoAuthenticated(false);
+                    navigate("/");
+                  }}
+                >
+                  <Art name="imgLucideLogIn" />
+                  로그아웃
+                </button>
+              </>
+            ) : (
+              <>
+                <SiteLink to="/login" className="dw-button">
+                  <Art name="imgLucideLogIn" />
+                  로그인
+                </SiteLink>
+                <SiteLink to="/signup" className="dw-button dw-button-dark">
+                  <Art name="imgLucideUserRoundPlus" />
+                  회원가입
+                </SiteLink>
+              </>
+            )}
           </div>
         </nav>
       </div>
@@ -271,6 +296,7 @@ export default function Layout({
       "/location": "오시는 길",
       "/login": "로그인",
       "/signup": "회원가입",
+      "/mypage": "마이페이지",
     };
     const previous = document.title;
     const cleanPath = pathname.replace(/\/$/, "") || "/";
