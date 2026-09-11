@@ -425,14 +425,6 @@
   overflow: hidden;
   padding-top: calc(160 * var(--u));
 }
-.dw-home-hero::after {
-  content: "";
-  position: absolute;
-  z-index: 1;
-  inset: 0;
-  background: rgba(255, 255, 255, 0.12);
-  pointer-events: none;
-}
 .dw-home-hero-video {
   position: absolute;
   z-index: 0;
@@ -441,10 +433,9 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
-  filter: brightness(1.14) saturate(0.72);
 }
 .dw-home-hero > .dw-container {
-  z-index: 2;
+  z-index: 1;
 }
 .dw-home-hero-copy p {
   font-size: calc(40 * var(--u));
