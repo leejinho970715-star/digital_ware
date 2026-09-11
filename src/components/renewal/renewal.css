@@ -422,7 +422,29 @@
   background-size: cover;
   background-position: center;
   position: relative;
+  overflow: hidden;
   padding-top: calc(160 * var(--u));
+}
+.dw-home-hero::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.12);
+  pointer-events: none;
+}
+.dw-home-hero-video {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(1.14) saturate(0.72);
+}
+.dw-home-hero > .dw-container {
+  z-index: 2;
 }
 .dw-home-hero-copy p {
   font-size: calc(40 * var(--u));
@@ -3697,6 +3719,84 @@
 .dw-about-bubbles .dw-art:nth-child(6) {
   right: 27%;
   top: 67%;
+}
+@keyframes dw-about-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-0.35deg);
+  }
+  50% {
+    transform: translate3d(8px, -22px, 0) rotate(0.75deg);
+  }
+}
+@keyframes dw-about-effect-float {
+  0%,
+  100% {
+    transform: translate3d(-7px, 5px, 0) rotate(-5deg) scale(0.98);
+  }
+  50% {
+    transform: translate3d(9px, -12px, 0) rotate(7deg) scale(1.03);
+  }
+}
+@keyframes dw-about-bubble-float {
+  0%,
+  100% {
+    transform: translate3d(-5px, 7px, 0) scale(0.94);
+  }
+  50% {
+    transform: translate3d(8px, -18px, 0) scale(1.06);
+  }
+}
+.dw-about-hero-art,
+.dw-about-visual > .dw-art:first-child,
+.dw-about-services-orb {
+  animation: dw-about-float 6.8s ease-in-out infinite;
+  animation-play-state: paused;
+  will-change: transform;
+}
+.dw-about-strength:nth-child(2) .dw-about-visual > .dw-art:first-child {
+  animation-duration: 7.7s;
+  animation-delay: -2.4s;
+  animation-direction: reverse;
+}
+.dw-about-strength:nth-child(3) .dw-about-visual > .dw-art:first-child {
+  animation-duration: 6.2s;
+  animation-delay: -4.1s;
+}
+.dw-about-effect {
+  animation: dw-about-effect-float 8.4s ease-in-out infinite;
+  animation-play-state: paused;
+  will-change: transform;
+}
+.dw-about-strength:nth-child(2) .dw-about-effect {
+  animation-delay: -3.2s;
+  animation-direction: reverse;
+}
+.dw-about-strength:nth-child(3) .dw-about-effect {
+  animation-delay: -5.1s;
+}
+.dw-about-services-orb {
+  animation-duration: 9.2s;
+  animation-delay: -3s;
+}
+.dw-about-bubbles .dw-art {
+  animation: dw-about-bubble-float 5.4s ease-in-out infinite;
+  animation-play-state: paused;
+  will-change: transform;
+}
+.dw-about-bubbles .dw-art:nth-child(2n) {
+  animation-direction: reverse;
+  animation-delay: -2.2s;
+}
+.dw-about-bubbles .dw-art:nth-child(3n) {
+  animation-duration: 6.6s;
+  animation-delay: -4s;
+}
+.dw-about-hero.dw-in-view .dw-about-hero-art,
+.dw-about-story.dw-in-view .dw-about-visual > .dw-art,
+.dw-about-services.dw-in-view .dw-about-services-orb,
+.dw-about-services.dw-in-view .dw-about-bubbles .dw-art {
+  animation-play-state: running;
 }
 .dw-about-services-copy {
   position: relative;

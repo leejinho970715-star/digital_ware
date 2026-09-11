@@ -67,6 +67,19 @@ export default function Home() {
         className="dw-home-hero"
         style={{ backgroundImage: `url(${asset("home", "imgVisualBg")})` }}
       >
+        <video
+          className="dw-home-hero-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+          aria-hidden="true"
+        >
+          <source
+            src={`${import.meta.env.BASE_URL}assets/visual-video.mp4`}
+            type="video/mp4"
+          />
+        </video>
         <div className="dw-container">
           <div className="dw-home-hero-copy" data-reveal>
             <h1>
