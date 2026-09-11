@@ -327,9 +327,9 @@
 }
 .dw-header-inner {
   height: 100%;
-  display: flex;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
-  justify-content: space-between;
   gap: 24px;
 }
 .dw-logo {
@@ -351,9 +351,12 @@
 .dw-nav {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: calc(33 * var(--u));
   font-size: calc(20 * var(--u));
   white-space: nowrap;
+  min-width: 0;
+  width: 100%;
 }
 .dw-nav > a,
 .dw-service-menu > button {
@@ -366,7 +369,8 @@
 .dw-auth {
   display: flex;
   gap: calc(16 * var(--u));
-  margin-left: calc(42 * var(--u));
+  margin-left: 0;
+  justify-self: end;
 }
 .dw-auth .dw-button {
   min-width: calc(150 * var(--u));
