@@ -321,7 +321,8 @@
   min-height: 64px;
   background: #ffffffed;
   border-bottom: 1px solid var(--line);
-  position: relative;
+  position: sticky;
+  top: 0;
   z-index: 30;
   backdrop-filter: blur(16px);
 }
