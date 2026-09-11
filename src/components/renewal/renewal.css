@@ -1682,14 +1682,22 @@
   }
 }
 @media (max-width: 900px) {
+  .dw-header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
   .dw-menu-toggle {
     display: flex;
     align-items: center;
-    gap: 12px;
+    justify-content: center;
+    margin-left: auto;
     padding: 12px;
   }
   .dw-menu-toggle span {
     font-size: 23px;
+    line-height: 1;
   }
   .dw-nav {
     display: none;
