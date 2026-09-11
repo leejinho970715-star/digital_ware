@@ -377,6 +377,9 @@
   justify-self: end;
   min-width: fit-content;
 }
+.dw-auth-mobile {
+  display: none;
+}
 .dw-auth .dw-button {
   min-width: calc(150 * var(--u));
   min-height: calc(50 * var(--u));
@@ -1721,11 +1724,19 @@
     background: #f1f7f7;
     margin: 8px 0;
   }
-  .dw-auth {
-    margin-top: 15px;
+  .dw-auth-desktop {
+    display: none;
   }
-  .dw-auth .dw-button {
-    min-width: 140px;
+  .dw-auth-mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin-top: 15px;
+    gap: 10px;
+  }
+  .dw-auth-mobile .dw-button {
+    width: 100%;
+    min-width: 100%;
     min-height: 44px;
   }
   .dw-auth .dw-art {
