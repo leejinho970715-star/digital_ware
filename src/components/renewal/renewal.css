@@ -330,7 +330,7 @@
   display: grid;
   grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
-  gap: 24px;
+  gap: 20px;
 }
 .dw-logo {
   display: block;
@@ -357,6 +357,7 @@
   white-space: nowrap;
   min-width: 0;
   width: 100%;
+  margin-inline: auto;
 }
 .dw-nav > a,
 .dw-service-menu > button {
@@ -368,9 +369,12 @@
 }
 .dw-auth {
   display: flex;
+  align-items: center;
+  justify-content: flex-end;
   gap: calc(16 * var(--u));
   margin-left: 0;
   justify-self: end;
+  min-width: fit-content;
 }
 .dw-auth .dw-button {
   min-width: calc(150 * var(--u));

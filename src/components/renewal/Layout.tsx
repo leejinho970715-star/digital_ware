@@ -124,39 +124,39 @@ function Header() {
               </div>
             </div>
           ))}
-          <div className="dw-auth">
-            {authenticated ? (
-              <>
-                <SiteLink to="/mypage" className="dw-button">
-                  <Art name="imgLucideUserRoundPlus" />
-                  마이페이지
-                </SiteLink>
-                <button
-                  type="button"
-                  className="dw-button dw-button-dark"
-                  onClick={() => {
-                    setDemoAuthenticated(false);
-                    navigate("/");
-                  }}
-                >
-                  <Art name="imgLucideLogIn" />
-                  로그아웃
-                </button>
-              </>
-            ) : (
-              <>
-                <SiteLink to="/login" className="dw-button">
-                  <Art name="imgLucideLogIn" />
-                  로그인
-                </SiteLink>
-                <SiteLink to="/signup" className="dw-button dw-button-dark">
-                  <Art name="imgLucideUserRoundPlus" />
-                  회원가입
-                </SiteLink>
-              </>
-            )}
-          </div>
         </nav>
+        <div className="dw-auth">
+          {authenticated ? (
+            <>
+              <SiteLink to="/mypage" className="dw-button">
+                <Art name="imgLucideUserRoundPlus" />
+                마이페이지
+              </SiteLink>
+              <button
+                type="button"
+                className="dw-button dw-button-dark"
+                onClick={() => {
+                  setDemoAuthenticated(false);
+                  navigate("/");
+                }}
+              >
+                <Art name="imgLucideLogIn" />
+                로그아웃
+              </button>
+            </>
+          ) : (
+            <>
+              <SiteLink to="/login" className="dw-button">
+                <Art name="imgLucideLogIn" />
+                로그인
+              </SiteLink>
+              <SiteLink to="/signup" className="dw-button dw-button-dark">
+                <Art name="imgLucideUserRoundPlus" />
+                회원가입
+              </SiteLink>
+            </>
+          )}
+        </div>
       </div>
     </header>
   );
